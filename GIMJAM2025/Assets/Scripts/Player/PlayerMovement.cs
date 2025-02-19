@@ -7,7 +7,7 @@ public class PlayerMovement : Player
     public float moveSpeed = 5f;
     private Vector3 moveDirection;
 
-    void Update()
+    void FixedUpdate()
     {
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveZ = Input.GetAxisRaw("Vertical");

@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDash : Player
+public class SportDash : Player, IDashing
 {
-    public float dashSpeed = 10f;
-    public float dashDuration = 0.2f;
-    public float dashCooldown = 1f;
-    private float dashTime = 0f;
+    [field: SerializeField] public float dashSpeed {get;set;}
+    [field: SerializeField] public float dashDuration {get;set;}
+    [field: SerializeField] public float dashCooldown {get;set;}
+    public float dashTime {get;set;}
     private bool isDashing = false;
     private Vector3 dashDirection;
 
@@ -41,7 +41,7 @@ public class PlayerDash : Player
         }
     }
 
-    void StartDash()
+    public void StartDash()
     {
         isDashing = true;
         dashTime = dashDuration;
@@ -52,9 +52,10 @@ public class PlayerDash : Player
         {
             trailRenderer.enabled = true;
         }
+        playerMovement.enabled = false;
     }
 
-    void StopDash()
+    public void StopDash()
     {
         isDashing = false;
         GetComponent<Rigidbody>().velocity = Vector3.zero;
@@ -63,6 +64,7 @@ public class PlayerDash : Player
             trailRenderer.enabled = false;
         }
         Invoke(nameof(ResetDashCooldown), dashCooldown);
+        playerMovement.enabled = true;
     }
 
     void ResetDashCooldown()
