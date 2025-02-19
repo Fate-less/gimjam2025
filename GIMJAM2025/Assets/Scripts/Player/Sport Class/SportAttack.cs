@@ -13,11 +13,12 @@ public class SportAttack : MonoBehaviour, IAttacking
     public float knockbackDistance{get;set;}
     public Collider attackCollider;
     private PlayerMovement playerMovement;
+    private Animator animator;
 
     void Start()
     {
-        playerMovement = GetComponentInParent<PlayerMovement>();
-
+        playerMovement = GetComponent<PlayerMovement>();
+        animator = GetComponent<Animator>();
         if (attackCollider != null)
         {
             attackCollider.enabled = false;
@@ -50,6 +51,7 @@ public class SportAttack : MonoBehaviour, IAttacking
         isAttacking = true;
         attackTime = 0f;
         playerMovement.enabled = false;
+        animator.SetBool("isAttacking", true);
         attackDirection = playerMovement.GetMoveDirection();
 
         if (attackCollider != null)
@@ -62,6 +64,7 @@ public class SportAttack : MonoBehaviour, IAttacking
     {
         isAttacking = false;
         playerMovement.enabled = true;
+        animator.SetBool("isAttacking", false);
         if (attackCollider != null)
         {
             attackCollider.enabled = false;

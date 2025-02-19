@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DelinquentAttack : MonoBehaviour, IAttacking
+public class DelinquentAttack : Player, IAttacking
 {
     [field: SerializeField] public float attackDuration {get; set;}
     [field: SerializeField] public float attackMoveDistance {get; set;}
@@ -10,7 +10,7 @@ public class DelinquentAttack : MonoBehaviour, IAttacking
     private bool isAttacking = false;
     private float attackTime = 0f;
     private Vector3 attackDirection;
-    public float knockbackDistance{get;set;}
+    [field: SerializeField] public float knockbackDistance{get;set;}
     public Collider attackCollider;
     private PlayerMovement playerMovement;
     [field: SerializeField] float windUpDuration {get;set;}
