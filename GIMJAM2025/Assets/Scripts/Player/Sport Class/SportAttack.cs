@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SportAttack : MonoBehaviour, IAttacking
+public class SportAttack : Player, IAttacking
 {
     [field: SerializeField] public float attackDuration {get;set;}
     [field: SerializeField] public float attackMoveDistance {get;set;}
@@ -12,6 +12,7 @@ public class SportAttack : MonoBehaviour, IAttacking
     private Vector3 attackDirection;
     public float knockbackDistance{get;set;}
     public Collider attackCollider;
+    public GameObject SportSlashVFX;
     private PlayerMovement playerMovement;
     private Animator animator;
 
@@ -53,7 +54,7 @@ public class SportAttack : MonoBehaviour, IAttacking
         playerMovement.enabled = false;
         animator.SetBool("isAttacking", true);
         attackDirection = playerMovement.GetMoveDirection();
-
+        StartCoroutine(SlashVFX());
         if (attackCollider != null)
         {
             attackCollider.enabled = true;
@@ -80,5 +81,13 @@ public class SportAttack : MonoBehaviour, IAttacking
         Rigidbody enemyRb = other.GetComponent<Rigidbody>();
         Vector3 knockbackDirection = (other.transform.position - transform.position).normalized;
         enemyRb.AddForce(knockbackDirection * knockbackDistance, ForceMode.Impulse);
+    }
+
+    IEnumerator SlashVFX()
+    {
+        yield return new WaitForSeconds(attackDuration / 3f);
+        SportSlashVFX.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        SportSlashVFX.SetActive(false);
     }
 }

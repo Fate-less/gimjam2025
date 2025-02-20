@@ -9,7 +9,7 @@ public class NerdAttack : Player, IAttacking
     public int attackDamage {get;set;}
     [SerializeField] GameObject magicBallObject;
     private bool isAttacking = false;
-    private bool castingDone = false;
+    private bool castingDone = true;
     private float attackTime = 0f;
     private Vector3 attackDirection;
     public float knockbackDistance{get;set;}
