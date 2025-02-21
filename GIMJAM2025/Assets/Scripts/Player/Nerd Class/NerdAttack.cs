@@ -12,12 +12,16 @@ public class NerdAttack : Player, IAttacking
     private bool castingDone = true;
     private float attackTime = 0f;
     private Vector3 attackDirection;
+    [SerializeField] float windUpDuration;
     public float knockbackDistance{get;set;}
+    private float windUpTime;
     private PlayerMovement playerMovement;
+    private Animator animator;
 
     void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -28,6 +32,7 @@ public class NerdAttack : Player, IAttacking
         }
         if (isAttacking)
         {
+            windUpTime += Time.deltaTime;
             attackTime += Time.deltaTime;
             if (attackTime >= attackDuration)
             {
@@ -40,10 +45,14 @@ public class NerdAttack : Player, IAttacking
     {
         if (!castingDone)
         {
-            GetComponent<Rigidbody>().AddForce(-attackDirection * attackMoveDistance, ForceMode.Impulse);
-            Instantiate(magicBallObject, transform.position, Quaternion.LookRotation(attackDirection));
-            Debug.Log("Magic");
-            castingDone = true;
+            if(windUpTime >= windUpDuration)
+            {
+                GetComponent<Rigidbody>().AddForce(-attackDirection * attackMoveDistance, ForceMode.Impulse);
+                Instantiate(magicBallObject, transform.position, Quaternion.LookRotation(attackDirection));
+                Debug.Log("Magic");
+                castingDone = true;
+                windUpTime = 0;
+            }
         }
     }
 
@@ -53,6 +62,7 @@ public class NerdAttack : Player, IAttacking
         isAttacking = true;
         attackTime = 0f;
         playerMovement.enabled = false;
+        animator.SetBool("isAttacking", true);
         // Calculate attack direction from mouse position
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
@@ -72,5 +82,6 @@ public class NerdAttack : Player, IAttacking
     {
         isAttacking = false;
         playerMovement.enabled = true;
+        animator.SetBool("isAttacking", false);
     }
 }

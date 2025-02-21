@@ -17,10 +17,11 @@ public class DelinquentAttack : Player, IAttacking
     [field: SerializeField] float windUpDistance {get;set;}
     private float windUpTime;
     private bool attackDone, windUpDone;
+    private Animator animator;
     void Start()
     {
         playerMovement = GetComponentInParent<PlayerMovement>();
-
+        animator = GetComponent<Animator>();
         if (attackCollider != null)
         {
             attackCollider.enabled = false;
@@ -68,6 +69,7 @@ public class DelinquentAttack : Player, IAttacking
         attackTime = 0f; windUpTime = 0f;
         windUpDone = false; attackDone = false;
         playerMovement.enabled = false;
+        animator.SetBool("isAttacking", true);
         attackDirection = playerMovement.GetMoveDirection();
         attackDirection.y = 0;
         if (attackCollider != null)
@@ -81,6 +83,7 @@ public class DelinquentAttack : Player, IAttacking
         Debug.Log("Attack stopped");
         isAttacking = false;
         playerMovement.enabled = true;
+        animator.SetBool("isAttacking", false);
         if (attackCollider != null)
         {
             attackCollider.enabled = false;
