@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
 
-public class SwapIdentity : Player
+public class ManipulateIdentity : Player
 {
     public List<GameObject> playerObjects;
     public float ChangeIdentityCooldown;
@@ -19,20 +19,20 @@ public class SwapIdentity : Player
             CurrentChangeIdentityCooldown = ChangeIdentityCooldown;
             if(Input.GetKeyDown(KeyCode.Alpha1))
             {
-                ChangeIdentity(1);
+                SwapIdentity(1);
             }
             else if(Input.GetKeyDown(KeyCode.Alpha2))
             {
-                ChangeIdentity(2);
+                SwapIdentity(2);
             }
             else if(Input.GetKeyDown(KeyCode.Alpha3))
             {
-                ChangeIdentity(3);
+                SwapIdentity(3);
             }
         }
     }
 
-    void ChangeIdentity(int identity){
+    void SwapIdentity(int identity){
         if(identity == 1)
         {
             if(gameObject != playerObjects[0])
@@ -62,6 +62,25 @@ public class SwapIdentity : Player
                 GameObject.FindGameObjectWithTag("VCam").GetComponent<CinemachineVirtualCamera>().LookAt = newIdentity.transform;
                 Destroy(gameObject);
             }
+        }
+    }
+
+    public void SplitIdentity()
+    {
+        if(gameObject != playerObjects[0])
+        {
+            GameObject newIdentity = Instantiate(playerObjects[1], transform.position, playerObjects[0].transform.rotation);
+            playerObjects.RemoveAt(1);
+        }
+        else if(gameObject != playerObjects[1])
+        {
+            GameObject newIdentity = Instantiate(playerObjects[2], transform.position, playerObjects[0].transform.rotation);
+            playerObjects.RemoveAt(2);
+        }
+        else if(gameObject != playerObjects[2])
+        {
+            GameObject newIdentity = Instantiate(playerObjects[0], transform.position, playerObjects[0].transform.rotation);
+            playerObjects.RemoveAt(0);
         }
     }
 }
