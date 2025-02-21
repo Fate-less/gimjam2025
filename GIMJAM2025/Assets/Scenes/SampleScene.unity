@@ -15903,6 +15903,7 @@ VFXRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_Sprite: {fileID: 1574686208, guid: 2ebc961f3f2ae41459eebb17ab0485ea, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -15914,6 +15915,8 @@ VFXRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 --- !u!1001 &8159290308148068785
