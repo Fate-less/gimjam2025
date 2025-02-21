@@ -4,38 +4,32 @@ using UnityEngine;
 
 public class Chase : State
 {
-    public float speed;
-    public Vector2 movement;
-    private GameObject ballObject;
-    private Rigidbody2D rb;
-    
+    private Transform player;  // Assign the player's Transform in the inspector
+    public float moveSpeed = 3f;
+    private Rigidbody rb;
+
     void Start()
     {
-        ballObject = GameObject.FindGameObjectWithTag("Ball");
-        rb = GetComponent<Rigidbody2D>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        ChaseBall();
+        float distance = Vector3.Distance(transform.position, player.position);
+        if(player == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        }
+        ChasePlayer();
     }
 
-    public void ChaseBall()
+    void ChasePlayer()
     {
-        // Calculate movement
-        if(gameObject.transform.position.y > 3.3f)
+        Vector3 direction = (player.position - transform.position).normalized;
+        if(rb.velocity.magnitude <= moveSpeed)
         {
-            transform.position = new Vector2(transform.position.x,3.3f);
+            rb.AddForce(direction * moveSpeed, ForceMode.VelocityChange);
         }
-        else if (gameObject.transform.position.y < -3.3f)
-        {
-            transform.position = new Vector2(transform.position.x, -3.3f);
-        }
-        float ballPosition = Mathf.Clamp(ballObject.transform.position.y, -3.3f, 3.3f);
-        movement = new Vector2(0, ballPosition) * speed * Time.deltaTime;
-
-        // Move paddle
-        transform.Translate(movement);
     }
 }

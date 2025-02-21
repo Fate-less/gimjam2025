@@ -4,19 +4,24 @@ using UnityEngine;
 
 public class InChaseRange : Condition
 {
-    private GameObject ballObject;
+    private Transform player;
+    public float detectionRange = 5f;
 
     void Start()
     {
-        ballObject = GameObject.FindGameObjectWithTag("Ball");
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     public override bool ConditionCheck()
     {
-        if(ballObject.transform.position.x > 0)
+        float distance = Vector3.Distance(transform.position, player.position);
+        if (distance <= detectionRange)
         {
             return true;
         }
-        return false;
+        else
+        {
+            return false;
+        }
     }
 }

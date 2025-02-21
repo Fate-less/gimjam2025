@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3816914401676925301}
   - component: {fileID: 5307746536609536366}
   - component: {fileID: 1107623860289470375}
+  - component: {fileID: 9096875312175401570}
   - component: {fileID: 6904107166682469086}
   - component: {fileID: 1076009215491421971}
   - component: {fileID: 7341905010254991733}
@@ -144,6 +145,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
+--- !u!114 &9096875312175401570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 910130903933930807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c8aa1646109084cbc25ffe3a25df54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerObjects:
+  - {fileID: 7343942401431461090, guid: a8a4774b719d99a4a93e98b4bc68e244, type: 3}
+  - {fileID: 910130903933930807}
+  - {fileID: 774979318915750894, guid: c53efac969e4496409fcb5ef65349e96, type: 3}
+  ChangeIdentityCooldown: 0
 --- !u!114 &6904107166682469086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,9 +190,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <attackDuration>k__BackingField: 0.15
-  <attackMoveDistance>k__BackingField: 30
+  <attackMoveDistance>k__BackingField: 50
   <attackDamage>k__BackingField: 20
-  <knockbackDistance>k__BackingField: 0
+  <knockbackDistance>k__BackingField: 40
   attackCollider: {fileID: 4568281715579173329}
   <windUpDuration>k__BackingField: 0.3
   <windUpDistance>k__BackingField: 15
