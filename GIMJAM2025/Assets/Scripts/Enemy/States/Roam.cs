@@ -33,7 +33,7 @@ public class Roam : State
         Vector3 direction = (roamTarget - transform.position).normalized;
         if(rb.velocity.magnitude <= moveSpeed)
         {
-            rb.AddForce(direction * moveSpeed / 2, ForceMode.VelocityChange);
+            rb.AddForce(direction * moveSpeed, ForceMode.Acceleration);
         }
     }
 

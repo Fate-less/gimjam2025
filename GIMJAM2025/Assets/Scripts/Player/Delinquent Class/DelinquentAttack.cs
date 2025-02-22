@@ -15,13 +15,16 @@ public class DelinquentAttack : Player, IAttacking
     private PlayerMovement playerMovement;
     [field: SerializeField] float windUpDuration {get;set;}
     [field: SerializeField] float windUpDistance {get;set;}
+    public GameObject hitEffectObject;
     private float windUpTime;
     private bool attackDone, windUpDone;
     private Animator animator;
+    private TrailRenderer trailRenderer;
     void Start()
     {
         playerMovement = GetComponentInParent<PlayerMovement>();
         animator = GetComponent<Animator>();
+        trailRenderer = GetComponent<TrailRenderer>();
         if (attackCollider != null)
         {
             attackCollider.enabled = false;
@@ -55,10 +58,16 @@ public class DelinquentAttack : Player, IAttacking
             Debug.Log("Attack");
             windUpTime = 0f;
             attackDone = true;
+            trailRenderer.enabled = true;
+            if (attackCollider != null)
+            {
+                attackCollider.enabled = true;
+            }
         }
         if (attackTime >= attackDuration + windUpDuration)
         {
             attackTime = 0f;
+            trailRenderer.enabled = false;
             EndAttack();
         }
     }
@@ -72,10 +81,6 @@ public class DelinquentAttack : Player, IAttacking
         animator.SetBool("isAttacking", true);
         attackDirection = playerMovement.GetMoveDirection();
         attackDirection.y = 0;
-        if (attackCollider != null)
-        {
-            attackCollider.enabled = true;
-        }
     }
 
     public void EndAttack()
@@ -92,12 +97,14 @@ public class DelinquentAttack : Player, IAttacking
 
     private void OnTriggerEnter(Collider other)
     {
-        IDamagable damagable = other.GetComponent<IDamagable>();
+        GameObject enemyObject = other.transform.parent.gameObject;
+        IDamagable damagable = enemyObject.GetComponent<IDamagable>();
         if (damagable == null) return;
-        Debug.Log("Enemy hit: " + other.gameObject.name);
+        Debug.Log("Enemy hit: " + enemyObject.gameObject.name);
         damagable.TakeDamage(attackDamage);
-        Rigidbody enemyRb = other.GetComponent<Rigidbody>();
-        Vector3 knockbackDirection = (other.transform.position - transform.position).normalized;
+        Instantiate(hitEffectObject, enemyObject.transform.position, transform.rotation);
+        Rigidbody enemyRb = enemyObject.GetComponent<Rigidbody>();
+        Vector3 knockbackDirection = (enemyObject.transform.position - transform.position).normalized;
         enemyRb.AddForce(knockbackDirection * knockbackDistance, ForceMode.Impulse);
     }
 }

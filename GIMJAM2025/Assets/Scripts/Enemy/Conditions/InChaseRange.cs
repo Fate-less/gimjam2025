@@ -14,6 +14,13 @@ public class InChaseRange : Condition
 
     public override bool ConditionCheck()
     {
+        try
+        {
+            if(player==null)
+            {
+                player = GameObject.FindGameObjectWithTag("Player").transform;
+            }
+        } catch {player = GameObject.FindGameObjectWithTag("Player").transform;}
         float distance = Vector3.Distance(transform.position, player.position);
         if (distance <= detectionRange)
         {

@@ -13,6 +13,7 @@ public class SportAttack : Player, IAttacking
     [field: SerializeField] public float knockbackDistance{get;set;}
     public Collider attackCollider;
     public GameObject SportSlashVFX;
+    public GameObject hitEffectObject;
     private PlayerMovement playerMovement;
     private Animator animator;
 
@@ -79,6 +80,7 @@ public class SportAttack : Player, IAttacking
         if (damagable == null) return;
         Debug.Log("Enemy hit: " + enemyObject.gameObject.name);
         damagable.TakeDamage(attackDamage);
+        Instantiate(hitEffectObject, enemyObject.transform.position, transform.rotation);
         Rigidbody enemyRb = enemyObject.GetComponent<Rigidbody>();
         Vector3 knockbackDirection = (enemyObject.transform.position - transform.position).normalized;
         enemyRb.AddForce(knockbackDirection * knockbackDistance, ForceMode.Impulse);

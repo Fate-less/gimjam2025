@@ -16,11 +16,14 @@ public class Chase : State
 
     void FixedUpdate()
     {
-        float distance = Vector3.Distance(transform.position, player.position);
-        if(player == null)
+        try
         {
-            player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        }
+            if(player==null)
+            {
+                player = GameObject.FindGameObjectWithTag("Player").transform;
+            }
+        } catch {player = GameObject.FindGameObjectWithTag("Player").transform;}
+        float distance = Vector3.Distance(transform.position, player.position);
         ChasePlayer();
     }
 

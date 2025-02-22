@@ -8,6 +8,7 @@ public class MagicBall : MonoBehaviour
     public float lifetime = 3f;
     public float damage = 10f;
     public float knockbackForce = 5f;
+    public GameObject hitEffectObject;
 
     void Start()
     {
@@ -21,15 +22,17 @@ public class MagicBall : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        IDamagable damagable = other.GetComponent<IDamagable>();
+        GameObject enemyObject = other.transform.parent.gameObject;
+        IDamagable damagable = enemyObject.GetComponent<IDamagable>();
         
-        if (other.CompareTag("Enemy"))
+        if (enemyObject.CompareTag("Enemy"))
         {
-            Rigidbody enemyRb = other.GetComponent<Rigidbody>();
+            Rigidbody enemyRb = enemyObject.GetComponent<Rigidbody>();
             if (enemyRb != null)
             {
-                Vector3 knockbackDirection = (other.transform.position - transform.position).normalized;
+                Vector3 knockbackDirection = (enemyObject.transform.position - transform.position).normalized;
                 enemyRb.AddForce(knockbackDirection * knockbackForce, ForceMode.Impulse);
+                Instantiate(hitEffectObject, transform.position, transform.rotation);
             }
             Destroy(gameObject);
         }

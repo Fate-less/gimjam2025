@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 15303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 541d1fe6ea0f6c143b8187fa11ac7868, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -123,6 +123,8 @@ MonoBehaviour:
   lifetime: 3
   damage: 10
   knockbackForce: 5
+  hitEffectObject: {fileID: 7226583673155636401, guid: a2ab56839e1c9504ea9d141e95d0b16b,
+    type: 3}
 --- !u!96 &6591216978994652076
 TrailRenderer:
   serializedVersion: 3
