@@ -16,6 +16,7 @@ public class SportAttack : Player, IAttacking
     public GameObject hitEffectObject;
     private PlayerMovement playerMovement;
     private Animator animator;
+    private AudioManager audioManager;
 
     void Start()
     {
@@ -25,6 +26,7 @@ public class SportAttack : Player, IAttacking
         {
             attackCollider.enabled = false;
         }
+        audioManager = GetComponent<AudioManager>();
     }
 
     void Update()
@@ -60,6 +62,7 @@ public class SportAttack : Player, IAttacking
         {
             attackCollider.enabled = true;
         }
+        AudioSource.PlayClipAtPoint(audioManager.sportHit, transform.position);
     }
 
     public void EndAttack()
@@ -81,6 +84,7 @@ public class SportAttack : Player, IAttacking
         Debug.Log("Enemy hit: " + enemyObject.gameObject.name);
         damagable.TakeDamage(attackDamage);
         Instantiate(hitEffectObject, enemyObject.transform.position, transform.rotation);
+        AudioSource.PlayClipAtPoint(audioManager.enemiesHit[1],enemyObject.transform.position);
         Rigidbody enemyRb = enemyObject.GetComponent<Rigidbody>();
         Vector3 knockbackDirection = (enemyObject.transform.position - transform.position).normalized;
         enemyRb.AddForce(knockbackDirection * knockbackDistance, ForceMode.Impulse);

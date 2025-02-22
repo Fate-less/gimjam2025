@@ -91,9 +91,10 @@ public class MeleeAttack : State, IAttacking
 
     private void OnTriggerEnter(Collider other)
     {
-        ManipulateIdentity playerIdentity = other.GetComponent<ManipulateIdentity>();
+        GameObject playerObject = other.transform.parent.gameObject;
+        ManipulateIdentity playerIdentity = playerObject.GetComponent<ManipulateIdentity>();
         if (playerIdentity == null) return;
-        Debug.Log("Player hit: " + other.gameObject.name);
+        Debug.Log("Player hit: " + playerObject.gameObject.name);
         playerIdentity.SplitIdentity();
     }
 }

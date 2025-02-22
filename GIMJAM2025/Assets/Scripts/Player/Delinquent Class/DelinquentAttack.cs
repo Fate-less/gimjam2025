@@ -20,11 +20,13 @@ public class DelinquentAttack : Player, IAttacking
     private bool attackDone, windUpDone;
     private Animator animator;
     private TrailRenderer trailRenderer;
+    private AudioManager audioManager;
     void Start()
     {
         playerMovement = GetComponentInParent<PlayerMovement>();
         animator = GetComponent<Animator>();
         trailRenderer = GetComponent<TrailRenderer>();
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         if (attackCollider != null)
         {
             attackCollider.enabled = false;
@@ -81,6 +83,7 @@ public class DelinquentAttack : Player, IAttacking
         animator.SetBool("isAttacking", true);
         attackDirection = playerMovement.GetMoveDirection();
         attackDirection.y = 0;
+        AudioSource.PlayClipAtPoint(audioManager.bullyHit,transform.position);
     }
 
     public void EndAttack()
@@ -103,6 +106,7 @@ public class DelinquentAttack : Player, IAttacking
         Debug.Log("Enemy hit: " + enemyObject.gameObject.name);
         damagable.TakeDamage(attackDamage);
         Instantiate(hitEffectObject, enemyObject.transform.position, transform.rotation);
+        AudioSource.PlayClipAtPoint(audioManager.enemiesHit[0],enemyObject.transform.position);
         Rigidbody enemyRb = enemyObject.GetComponent<Rigidbody>();
         Vector3 knockbackDirection = (enemyObject.transform.position - transform.position).normalized;
         enemyRb.AddForce(knockbackDirection * knockbackDistance, ForceMode.Impulse);

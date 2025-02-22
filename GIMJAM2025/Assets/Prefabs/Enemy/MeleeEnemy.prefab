@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6799327141031390518}
   - component: {fileID: 4419810354455528702}
   - component: {fileID: 1803845590859756171}
+  - component: {fileID: 455239679677187813}
   m_Layer: 0
   m_Name: AttackHitbox
   m_TagString: Untagged
@@ -100,10 +101,22 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 3, y: 1, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &455239679677187813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 58955781853840682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b9da689f6c702b458ada43fee317c57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4337373886495007057
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,8 +384,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Health>k__BackingField: 100
-  hitEffectObject: {fileID: 5024009746357069194, guid: ec3f674830402cc45bce805cf6493db7,
-    type: 3}
 --- !u!114 &4308004585633522611
 MonoBehaviour:
   m_ObjectHideFlags: 0
