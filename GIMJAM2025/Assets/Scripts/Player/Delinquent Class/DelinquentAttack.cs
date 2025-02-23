@@ -100,6 +100,7 @@ public class DelinquentAttack : Player, IAttacking
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!other.CompareTag("Enemy")) { return; }
         GameObject enemyObject = other.transform.parent.gameObject;
         IDamagable damagable = enemyObject.GetComponent<IDamagable>();
         if (damagable == null) return;

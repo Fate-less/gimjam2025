@@ -26,7 +26,7 @@ public class SportAttack : Player, IAttacking
         {
             attackCollider.enabled = false;
         }
-        audioManager = GetComponent<AudioManager>();
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
     }
 
     void Update()
@@ -78,6 +78,10 @@ public class SportAttack : Player, IAttacking
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!other.CompareTag("Enemy"))
+        {
+            return;
+        }
         GameObject enemyObject = other.transform.parent.gameObject;
         IDamagable damagable = enemyObject.GetComponent<IDamagable>();
         if (damagable == null) return;

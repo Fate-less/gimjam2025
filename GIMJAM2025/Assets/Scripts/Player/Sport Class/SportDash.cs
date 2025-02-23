@@ -13,12 +13,12 @@ public class SportDash : Player, IDashing
 
     private PlayerMovement playerMovement;
     private TrailRenderer trailRenderer;
-
+    private AudioManager audioManager;
     void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
         trailRenderer = GetComponent<TrailRenderer>();
-
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         if (trailRenderer != null)
         {
             trailRenderer.enabled = false;
@@ -48,6 +48,7 @@ public class SportDash : Player, IDashing
         dashDirection = playerMovement.GetMoveDirection();
         Vector3 dashVelocity = dashDirection * dashSpeed;
         GetComponent<Rigidbody>().velocity = dashVelocity;
+        AudioSource.PlayClipAtPoint(audioManager.sportAbilities, transform.position);
         if (trailRenderer != null)
         {
             trailRenderer.enabled = true;

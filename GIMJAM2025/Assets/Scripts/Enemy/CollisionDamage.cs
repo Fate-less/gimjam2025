@@ -8,15 +8,18 @@ public class CollisionDamage : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        GameObject playerObject = other.transform.parent.gameObject;
-        ManipulateIdentity playerIdentity = playerObject.GetComponent<ManipulateIdentity>();
-        if (playerIdentity == null) return;
-        Debug.Log("Player hit: " + playerObject.gameObject.name);
-        playerIdentity.SplitIdentity();
-        if(!isHit)
+        if (other.CompareTag("Player"))
         {
-            Destroy(transform.parent.gameObject);
-            isHit = true;
+            GameObject playerObject = other.transform.parent.gameObject;
+            ManipulateIdentity playerIdentity = playerObject.GetComponent<ManipulateIdentity>();
+            if (playerIdentity == null) return;
+            Debug.Log("Player hit: " + playerObject.gameObject.name);
+            playerIdentity.SplitIdentity();
+            if (!isHit)
+            {
+                Destroy(transform.parent.gameObject);
+                isHit = true;
+            }
         }
     }
 }

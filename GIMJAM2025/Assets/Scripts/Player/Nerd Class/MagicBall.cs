@@ -9,10 +9,13 @@ public class MagicBall : MonoBehaviour
     public float damage = 10f;
     public float knockbackForce = 5f;
     public GameObject hitEffectObject;
+    private AudioManager audioManager;
 
     void Start()
     {
         Destroy(gameObject, lifetime);
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        AudioSource.PlayClipAtPoint(audioManager.nerdHit, transform.position);
     }
 
     void Update()
@@ -22,9 +25,9 @@ public class MagicBall : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!other.CompareTag("Enemy") || !other.CompareTag("Wall")) { return; }
         GameObject enemyObject = other.transform.parent.gameObject;
-        IDamagable damagable = enemyObject.GetComponent<IDamagable>();
-        
+        IDamagable damagable = enemyObject.GetComponent<IDamagable>(); 
         if (enemyObject.CompareTag("Enemy"))
         {
             Rigidbody enemyRb = enemyObject.GetComponent<Rigidbody>();

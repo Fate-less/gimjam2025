@@ -14,11 +14,13 @@ public class DelinquentDash : Player, IDashing
     private float dashCurrentCooldown;
     private PlayerMovement playerMovement;
     private TrailRenderer trailRenderer;
+    private AudioManager audioManager;
 
     void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
         trailRenderer = GetComponent<TrailRenderer>();
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         if (trailRenderer != null)
         {
             trailRenderer.enabled = false;
@@ -54,6 +56,7 @@ public class DelinquentDash : Player, IDashing
         dashDirection = playerMovement.GetMoveDirection();
         dashDirection.y = 1;
         dashVelocity = dashDirection * dashSpeed;
+        AudioSource.PlayClipAtPoint(audioManager.bullyAbilities, transform.position);
         if (trailRenderer != null)
         {
             trailRenderer.enabled = true;

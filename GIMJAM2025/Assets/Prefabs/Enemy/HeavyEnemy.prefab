@@ -156,8 +156,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Health>k__BackingField: 100
-  hitEffectObject: {fileID: 5024009746357069194, guid: ec3f674830402cc45bce805cf6493db7,
-    type: 3}
 --- !u!114 &8750951300576254131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -357,7 +355,7 @@ GameObject:
   - component: {fileID: 6729944368427733374}
   m_Layer: 0
   m_Name: AttackHitbox
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -491,7 +489,7 @@ GameObject:
   - component: {fileID: 1629092898213326288}
   m_Layer: 0
   m_Name: CharHitbox
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

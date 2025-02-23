@@ -14,11 +14,12 @@ public class NerdDash : Player, IDashing
 
     private PlayerMovement playerMovement;
     private TrailRenderer trailRenderer;
-
+    private AudioManager audioManager;
     void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
         trailRenderer = GetComponent<TrailRenderer>();
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
 
         if (trailRenderer != null)
         {
@@ -49,6 +50,7 @@ public class NerdDash : Player, IDashing
         dashDirection = playerMovement.GetMoveDirection();
         Vector3 dashVelocity = dashDirection * dashSpeed;
         Vector3 teleportTarget = transform.position + dashDirection * dashSpeed;
+        AudioSource.PlayClipAtPoint(audioManager.nerdAbilities, transform.position);
         if (!Physics.Raycast(transform.position, dashDirection, dashSpeed, wallLayer))
         {
             transform.position = teleportTarget;
