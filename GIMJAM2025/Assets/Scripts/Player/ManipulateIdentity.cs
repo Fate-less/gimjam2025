@@ -7,6 +7,7 @@ public class ManipulateIdentity : Player
 {
     public List<GameObject> playerObjects;
     public float ChangeIdentityCooldown;
+    public GameObject DeadPlayer;
     private float CurrentChangeIdentityCooldown;
     void Start()
     { 
@@ -33,13 +34,16 @@ public class ManipulateIdentity : Player
     }
 
     void SwapIdentity(int identity){
+        if(playerObjects[identity-1] == DeadPlayer){
+            return;
+        }
+        GameObject newIdentity = DeadPlayer;
         if(identity == 1)
         {
             if(gameObject != playerObjects[0])
             {
-                GameObject newIdentity = Instantiate(playerObjects[0], transform.position, playerObjects[0].transform.rotation);
-                GameObject.FindGameObjectWithTag("VCam").GetComponent<CinemachineVirtualCamera>().Follow = newIdentity.transform;
-                GameObject.FindGameObjectWithTag("VCam").GetComponent<CinemachineVirtualCamera>().LookAt = newIdentity.transform;
+                newIdentity = Instantiate(playerObjects[0], transform.position, playerObjects[0].transform.rotation);
+                RetrackVCam(newIdentity);
                 Destroy(gameObject);
             }
         }
@@ -47,9 +51,8 @@ public class ManipulateIdentity : Player
         {
             if(gameObject != playerObjects[1])
             {
-                GameObject newIdentity = Instantiate(playerObjects[1], transform.position, playerObjects[0].transform.rotation);
-                GameObject.FindGameObjectWithTag("VCam").GetComponent<CinemachineVirtualCamera>().Follow = newIdentity.transform;
-                GameObject.FindGameObjectWithTag("VCam").GetComponent<CinemachineVirtualCamera>().LookAt = newIdentity.transform;
+                newIdentity = Instantiate(playerObjects[1], transform.position, playerObjects[1].transform.rotation);
+                RetrackVCam(newIdentity);
                 Destroy(gameObject);
             }
         }
@@ -57,30 +60,53 @@ public class ManipulateIdentity : Player
         {
             if(gameObject != playerObjects[2])
             {
-                GameObject newIdentity = Instantiate(playerObjects[2], transform.position, playerObjects[0].transform.rotation);
-                GameObject.FindGameObjectWithTag("VCam").GetComponent<CinemachineVirtualCamera>().Follow = newIdentity.transform;
-                GameObject.FindGameObjectWithTag("VCam").GetComponent<CinemachineVirtualCamera>().LookAt = newIdentity.transform;
+                newIdentity = Instantiate(playerObjects[2], transform.position, playerObjects[2].transform.rotation);
+                RetrackVCam(newIdentity);
                 Destroy(gameObject);
             }
         }
+        try{
+            ManipulateIdentity newIdentityManipulateIdentity = newIdentity.GetComponent<ManipulateIdentity>();
+            for(int i=0;i<playerObjects.Count;i++){
+                if(playerObjects[i] == DeadPlayer){
+                    newIdentityManipulateIdentity.playerObjects.RemoveAt(i);
+                    newIdentityManipulateIdentity.playerObjects.Insert(i, DeadPlayer);
+                }
+            }
+        } catch {}
     }
 
     public void SplitIdentity()
     {
-        if(gameObject != playerObjects[0])
+        if(gameObject == playerObjects[0])
         {
             GameObject newIdentity = Instantiate(playerObjects[1], transform.position, playerObjects[0].transform.rotation);
-            playerObjects.RemoveAt(1);
+            RetrackVCam(newIdentity);
+            
+            playerObjects[0].GetComponent<PlayerStatus>().isDead = true;
+            newIdentity.GetComponent<ManipulateIdentity>().playerObjects.RemoveAt(0);
+            newIdentity.GetComponent<ManipulateIdentity>().playerObjects.Insert(0, DeadPlayer);
         }
-        else if(gameObject != playerObjects[1])
+        else if(gameObject == playerObjects[1])
         {
             GameObject newIdentity = Instantiate(playerObjects[2], transform.position, playerObjects[0].transform.rotation);
-            playerObjects.RemoveAt(2);
+            RetrackVCam(newIdentity);
+            playerObjects[1].GetComponent<PlayerStatus>().isDead = true;
+            newIdentity.GetComponent<ManipulateIdentity>().playerObjects.RemoveAt(1);
+            newIdentity.GetComponent<ManipulateIdentity>().playerObjects.Insert(1, DeadPlayer);
         }
-        else if(gameObject != playerObjects[2])
+        else if(gameObject == playerObjects[2])
         {
             GameObject newIdentity = Instantiate(playerObjects[0], transform.position, playerObjects[0].transform.rotation);
-            playerObjects.RemoveAt(0);
+            RetrackVCam(newIdentity);
+            playerObjects[2].GetComponent<PlayerStatus>().isDead = true;
+            newIdentity.GetComponent<ManipulateIdentity>().playerObjects.RemoveAt(2);
+            newIdentity.GetComponent<ManipulateIdentity>().playerObjects.Insert(2, DeadPlayer);
         }
+    }
+
+    private void RetrackVCam(GameObject newIdentity){
+        GameObject.FindGameObjectWithTag("VCam").GetComponent<CinemachineVirtualCamera>().Follow = newIdentity.transform;
+        GameObject.FindGameObjectWithTag("VCam").GetComponent<CinemachineVirtualCamera>().LookAt = newIdentity.transform;
     }
 }
