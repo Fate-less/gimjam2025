@@ -17,6 +17,7 @@ public class MeleeAttack : State, IAttacking
     [field: SerializeField] float windUpDistance {get;set;}
     private float windUpTime;
     private bool attackDone, windUpDone;
+    bool isHit = false;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
@@ -91,10 +92,15 @@ public class MeleeAttack : State, IAttacking
 
     private void OnTriggerEnter(Collider other)
     {
-        GameObject playerObject = other.transform.parent.gameObject;
+        GameObject playerObject = other.gameObject;
         ManipulateIdentity playerIdentity = playerObject.GetComponent<ManipulateIdentity>();
         if (playerIdentity == null) return;
         Debug.Log("Player hit: " + playerObject.gameObject.name);
         playerIdentity.SplitIdentity();
+        if (!isHit)
+        {
+            Destroy(transform.parent.gameObject);
+            isHit = true;
+        }
     }
 }
