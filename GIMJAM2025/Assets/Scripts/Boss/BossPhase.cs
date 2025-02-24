@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BossPhase : Enemy, IDamagable
 {
@@ -15,7 +16,18 @@ public class BossPhase : Enemy, IDamagable
     private float spinAttackTimer;
     private float bombAttackTimer;
     private float timeFlee;
-
+    private AudioSource audioSource;
+    private AudioManager audioManager;
+    private Animator animator;
+    private float phase;
+    private float currentPhase;
+    
+    void Start()
+    {
+        audioSource = GameObject.FindGameObjectWithTag("BGM").GetComponent<AudioSource>();
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        animator = GetComponent<Animator>();
+    }
     void Update()
     {
         timeFlee += Time.deltaTime;
@@ -28,24 +40,50 @@ public class BossPhase : Enemy, IDamagable
             spawnMobsTimer = 0f;
         }
 
-        if (Health <= 60)
+        if (Health <= 70)
         {
             spinAttackTimer += Time.deltaTime;
             if (spinAttackTimer >= spinAttackCooldown)
             {
                 Instantiate(BOSS_SpinAttack, transform.position, Quaternion.identity);
                 spinAttackTimer = 0f;
+                phase = 2;
             }
         }
 
-        if (Health <= 30)
+        if (Health <= 40)
         {
             bombAttackTimer += Time.deltaTime;
             if (bombAttackTimer >= bombAttackCooldown)
             {
                 Instantiate(BOSS_BombAttack, transform.position, Quaternion.identity);
                 bombAttackTimer = 0f;
+                phase = 3;
             }
+        }
+        if(currentPhase != phase){
+            ChangeBGM(Health);
+        }
+        if (Health <= 10){
+            SceneManager.LoadScene("Ending");
+        }
+    }
+
+    public void ChangeBGM(float health){
+        if(health < 70 && health > 40){
+            animator.SetInteger("Phase", 2);
+            audioSource.clip = audioManager.boss2BGM;
+            audioSource.Play();
+            currentPhase = 2;
+        }
+        if(health < 40){
+            animator.SetInteger("Phase", 3);
+            audioSource.clip = audioManager.boss3BGM;
+            audioSource.Play();
+            currentPhase = 3;
+        }
+        if (Health <= 10){
+            SceneManager.LoadScene("Ending");
         }
     }
 }

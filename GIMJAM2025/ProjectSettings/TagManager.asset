@@ -9,6 +9,9 @@ TagManager:
   - VCam
   - Dead Player
   - Floor
+  - BGM
+  - Boss Wall
+  - Monsters
   layers:
   - Default
   - TransparentFX

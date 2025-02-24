@@ -8,9 +8,14 @@ public class BossSpinAttack : MonoBehaviour
     public float rotationSpeed = 360f; // Degrees per second
     public float duration = 1f; // Time to complete one full rotation
     private float attackDelay;
+    private AudioManager audioManager;
 
     private float timer = 0f;
-
+    void Start()
+    {
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        AudioSource.PlayClipAtPoint(audioManager.boss2Abilities, transform.position);
+    }
     void Update()
     {
         // Rotate the object
@@ -22,6 +27,7 @@ public class BossSpinAttack : MonoBehaviour
             Instantiate(magicBall, transform.position, transform.rotation);
             attackDelay=0;
         }
+        
         // Track the time elapsed
         timer += Time.deltaTime;
         if (timer >= duration)

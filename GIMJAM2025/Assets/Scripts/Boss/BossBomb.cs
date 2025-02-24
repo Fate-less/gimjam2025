@@ -7,6 +7,11 @@ public class BossBomb : MonoBehaviour
     public float bombDamage;
     public float bombRange;
     public GameObject hitEffect;
+    private AudioManager audioManager;
+    void Start()
+    {
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+    }
     void OnCollisionEnter(Collision other)
     {
         Debug.Log("explode");
@@ -22,6 +27,7 @@ public class BossBomb : MonoBehaviour
                 hitCollider.gameObject.GetComponent<ManipulateIdentity>().SplitIdentity();
             }
         }
+        AudioSource.PlayClipAtPoint(audioManager.boss3Abilities,transform.position);
         Destroy(gameObject);
     }
 }

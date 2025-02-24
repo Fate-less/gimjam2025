@@ -17,11 +17,12 @@ public class MeleeAttack : State, IAttacking
     [field: SerializeField] float windUpDistance {get;set;}
     private float windUpTime;
     private bool attackDone, windUpDone;
+    private AudioManager audioManager;
     bool isHit = false;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         if (attackCollider != null)
         {
             attackCollider.enabled = false;
@@ -96,6 +97,7 @@ public class MeleeAttack : State, IAttacking
         ManipulateIdentity playerIdentity = playerObject.GetComponent<ManipulateIdentity>();
         if (playerIdentity == null) return;
         Debug.Log("Player hit: " + playerObject.gameObject.name);
+        AudioSource.PlayClipAtPoint(audioManager.heavyEnemiesKill, transform.position);
         playerIdentity.SplitIdentity();
         if (!isHit)
         {

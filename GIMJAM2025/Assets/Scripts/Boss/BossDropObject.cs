@@ -7,12 +7,15 @@ public class BossDropObject : MonoBehaviour
     public GameObject bombObject;
     public int bombNumber;
     public Transform[] spawnPos;
+    private AudioManager audioManager;
     void Start()
     {
         Spawn();
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
     }
     public void Spawn()
     {
+        AudioSource.PlayClipAtPoint(audioManager.boss3Cast, transform.position);
         for(int i = 0; i < bombNumber; i++)
         {
             int randomPos = Random.Range(0, spawnPos.Length-1);

@@ -6,7 +6,11 @@ public class CollisionDamage : MonoBehaviour
 {
     bool isHit = false;
     float countDown = 0;
-    
+    private AudioManager audioManager;
+    void Start()
+    {
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -20,6 +24,7 @@ public class CollisionDamage : MonoBehaviour
                 ManipulateIdentity playerIdentity = playerObject.GetComponent<ManipulateIdentity>();
                 if (playerIdentity == null) return;
                 Debug.Log("Player hit: " + playerObject.gameObject.name);
+                AudioSource.PlayClipAtPoint(audioManager.enemiesHit[Random.Range(0,1)], transform.position);
                 playerIdentity.SplitIdentity();
                 if (!isHit)
                 {

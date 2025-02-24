@@ -13,10 +13,12 @@ public class RangeAttack : State, IAttacking
     private Vector3 attackDirection;
     public float knockbackDistance{get;set;}
     private Transform player;
+    private AudioManager audioManager;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         attackTime = 0;
     }
 
@@ -37,6 +39,7 @@ public class RangeAttack : State, IAttacking
     public void StartAttack()
     {
         attackDirection = (player.position - transform.position).normalized;
+        AudioSource.PlayClipAtPoint(audioManager.rangeEnemiesKill, transform.position);
         Instantiate(magicBallObject, transform.position, Quaternion.LookRotation(attackDirection));
         Debug.Log("Magic");
         EndAttack();
