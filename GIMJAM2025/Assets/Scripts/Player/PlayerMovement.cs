@@ -18,14 +18,15 @@ public class PlayerMovement : Player
     {
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveZ = Input.GetAxisRaw("Vertical");
-        if(moveX != 0)
+        if(moveX != 0 || moveZ != 0)
         {
             animator.SetBool("isMoving", true);
             if(moveX < 0)
             {
                 gameObject.GetComponent<SpriteRenderer>().flipX = true;
             }
-            else { gameObject.GetComponent<SpriteRenderer>().flipX = false; }
+            else if (moveX > 0)
+            { gameObject.GetComponent<SpriteRenderer>().flipX = false; }
         } else { animator.SetBool("isMoving", false); }
         moveDirection = new Vector3(moveX, 0f, moveZ).normalized;
         transform.Translate(moveDirection * moveSpeed * Time.deltaTime, Space.World);

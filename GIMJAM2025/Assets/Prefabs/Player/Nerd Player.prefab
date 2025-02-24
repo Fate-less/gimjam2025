@@ -302,7 +302,7 @@ MonoBehaviour:
   - {fileID: 917204500755926156, guid: a8a4774b719d99a4a93e98b4bc68e244, type: 3}
   - {fileID: 5826707521928420464, guid: e4352515dcf3b9d4f84dcb725c80561a, type: 3}
   - {fileID: 7639057162466599073}
-  ChangeIdentityCooldown: 0
+  ChangeIdentityCooldown: 2
   DeadPlayer: {fileID: 7016514136060108441, guid: 2648f41df38b7084f9908c94151c60dd,
     type: 3}
 --- !u!114 &7592041439969193929

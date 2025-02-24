@@ -334,7 +334,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <attackDuration>k__BackingField: 0.15
   <attackMoveDistance>k__BackingField: 50
-  <attackDamage>k__BackingField: 20
+  <attackDamage>k__BackingField: 3
   <knockbackDistance>k__BackingField: 30
   attackCollider: {fileID: 1014004970466900646}
   <windUpDuration>k__BackingField: 0.3
@@ -376,7 +376,7 @@ MonoBehaviour:
   - {fileID: 917204500755926156, guid: a8a4774b719d99a4a93e98b4bc68e244, type: 3}
   - {fileID: 5826707521928420464}
   - {fileID: 7639057162466599073, guid: c53efac969e4496409fcb5ef65349e96, type: 3}
-  ChangeIdentityCooldown: 0
+  ChangeIdentityCooldown: 2
   DeadPlayer: {fileID: 7016514136060108441, guid: 2648f41df38b7084f9908c94151c60dd,
     type: 3}
 --- !u!96 &2735769371825926126

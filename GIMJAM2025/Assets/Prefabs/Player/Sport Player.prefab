@@ -282,7 +282,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <attackDuration>k__BackingField: 1
   <attackMoveDistance>k__BackingField: 1
-  <attackDamage>k__BackingField: 5
+  <attackDamage>k__BackingField: 2
   <knockbackDistance>k__BackingField: 15
   attackCollider: {fileID: 6639265785378132781}
   SportSlashVFX: {fileID: 7880005527949074959}
@@ -304,7 +304,7 @@ MonoBehaviour:
   - {fileID: 917204500755926156}
   - {fileID: 5826707521928420464, guid: e4352515dcf3b9d4f84dcb725c80561a, type: 3}
   - {fileID: 7639057162466599073, guid: c53efac969e4496409fcb5ef65349e96, type: 3}
-  ChangeIdentityCooldown: 0
+  ChangeIdentityCooldown: 2
   DeadPlayer: {fileID: 7016514136060108441, guid: 2648f41df38b7084f9908c94151c60dd,
     type: 3}
 --- !u!114 &1271565099543827054

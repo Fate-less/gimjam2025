@@ -15,19 +15,22 @@ public class ManipulateIdentity : Player
     }
     void Update()
     { 
+        CurrentChangeIdentityCooldown-=Time.deltaTime;
         if(CurrentChangeIdentityCooldown <= 0)
         {
-            CurrentChangeIdentityCooldown = ChangeIdentityCooldown;
             if(Input.GetKeyDown(KeyCode.Alpha1))
             {
+                CurrentChangeIdentityCooldown = ChangeIdentityCooldown;
                 SwapIdentity(1);
             }
             else if(Input.GetKeyDown(KeyCode.Alpha2))
             {
+                CurrentChangeIdentityCooldown = ChangeIdentityCooldown;
                 SwapIdentity(2);
             }
             else if(Input.GetKeyDown(KeyCode.Alpha3))
             {
+                CurrentChangeIdentityCooldown = ChangeIdentityCooldown;
                 SwapIdentity(3);
             }
         }
