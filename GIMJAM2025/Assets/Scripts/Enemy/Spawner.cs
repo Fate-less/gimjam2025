@@ -7,25 +7,22 @@ public class Spawner : MonoBehaviour
     public GameObject[] enemyObject;
     public int enemyNumber;
     public Transform[] spawnPos;
-    void Start()
-    {
-        Spawn();
-    }
+
     public void Spawn()
     {
+        int randomPos = Random.Range(0, spawnPos.Length-1);
         int enemyObjectInLine = 0;
         for(int i = 0; i < enemyNumber; i++)
         {
-            int randomPos = Random.Range(0, spawnPos.Length-1);
-            if(enemyObjectInLine > enemyObject.Length)
+            if(enemyObjectInLine < enemyObject.Length)
+            {
+                Instantiate(enemyObject[enemyObjectInLine], spawnPos[randomPos]);
+                enemyObjectInLine++;
+            }
+            else
             {
                 enemyObjectInLine = 0;
             }
-            while(spawnPos[randomPos].childCount > 0){
-                randomPos++;
-            }
-            Instantiate(enemyObject[enemyObjectInLine], spawnPos[randomPos]);
-            enemyObjectInLine++;
         }
     }
 }

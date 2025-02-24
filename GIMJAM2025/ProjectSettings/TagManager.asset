@@ -7,8 +7,6 @@ TagManager:
   - Wall
   - Enemy
   - VCam
-  - Dead Player
-  - Floor
   layers:
   - Default
   - TransparentFX
