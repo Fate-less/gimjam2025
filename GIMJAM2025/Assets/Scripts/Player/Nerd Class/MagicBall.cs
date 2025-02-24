@@ -25,11 +25,13 @@ public class MagicBall : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag("Enemy") || !other.CompareTag("Wall")) { return; }
-        GameObject enemyObject = other.transform.parent.gameObject;
-        IDamagable damagable = enemyObject.GetComponent<IDamagable>(); 
-        if (enemyObject.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy"))
         {
+            GameObject enemyObject = other.transform.parent.gameObject;
+            IDamagable damagable = enemyObject.GetComponent<IDamagable>();
+            if (damagable == null) return;
+            Debug.Log("Enemy hit: " + enemyObject.gameObject.name);
+            damagable.TakeDamage((int)damage);
             Rigidbody enemyRb = enemyObject.GetComponent<Rigidbody>();
             if (enemyRb != null)
             {

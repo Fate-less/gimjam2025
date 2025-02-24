@@ -155,7 +155,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3, y: 6.5, z: 4}
+  m_Size: {x: 1, y: 6.5, z: 1}
   m_Center: {x: 0, y: -1, z: 0}
 --- !u!1 &5826707521928420464
 GameObject:
@@ -170,11 +170,13 @@ GameObject:
   - component: {fileID: 2490374707818122244}
   - component: {fileID: 3807152052009667513}
   - component: {fileID: 2236862230302850129}
-  - component: {fileID: 4735603802763679580}
   - component: {fileID: 3785150951804776073}
   - component: {fileID: 8053238088640360140}
+  - component: {fileID: 3733860006193021766}
+  - component: {fileID: 4735603802763679580}
   - component: {fileID: 2735769371825926126}
   - component: {fileID: 4783616591547546876}
+  - component: {fileID: 46575622854468090}
   m_Layer: 0
   m_Name: Delinquent Player
   m_TagString: Player
@@ -303,23 +305,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
---- !u!114 &4735603802763679580
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5826707521928420464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1c8aa1646109084cbc25ffe3a25df54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerObjects:
-  - {fileID: 917204500755926156, guid: a8a4774b719d99a4a93e98b4bc68e244, type: 3}
-  - {fileID: 5826707521928420464}
-  - {fileID: 7639057162466599073, guid: c53efac969e4496409fcb5ef65349e96, type: 3}
-  ChangeIdentityCooldown: 0
 --- !u!114 &3785150951804776073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,6 +340,44 @@ MonoBehaviour:
   <windUpDuration>k__BackingField: 0.3
   <windUpDistance>k__BackingField: 15
   hitEffectObject: {fileID: 5024009746357069194, guid: ec3f674830402cc45bce805cf6493db7,
+    type: 3}
+--- !u!114 &3733860006193021766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5826707521928420464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9124075156926f45a6f91e9233ef742, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSlot: 1
+  isDead: 0
+  reviveCooldown: 5
+  playerPrefab:
+  - {fileID: 917204500755926156, guid: a8a4774b719d99a4a93e98b4bc68e244, type: 3}
+  - {fileID: 5826707521928420464}
+  - {fileID: 7639057162466599073, guid: c53efac969e4496409fcb5ef65349e96, type: 3}
+--- !u!114 &4735603802763679580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5826707521928420464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c8aa1646109084cbc25ffe3a25df54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerObjects:
+  - {fileID: 917204500755926156, guid: a8a4774b719d99a4a93e98b4bc68e244, type: 3}
+  - {fileID: 5826707521928420464}
+  - {fileID: 7639057162466599073, guid: c53efac969e4496409fcb5ef65349e96, type: 3}
+  ChangeIdentityCooldown: 0
+  DeadPlayer: {fileID: 7016514136060108441, guid: 2648f41df38b7084f9908c94151c60dd,
     type: 3}
 --- !u!96 &2735769371825926126
 TrailRenderer:
@@ -490,3 +513,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!65 &46575622854468090
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5826707521928420464}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2, y: 2, z: 2}
+  m_Center: {x: 0, y: -1, z: 0}
