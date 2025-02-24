@@ -99,7 +99,7 @@ public class MeleeAttack : State, IAttacking
         playerIdentity.SplitIdentity();
         if (!isHit)
         {
-            Destroy(transform.parent.gameObject);
+            Destroy(gameObject);
             isHit = true;
         }
     }

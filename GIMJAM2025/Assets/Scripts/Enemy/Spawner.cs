@@ -7,12 +7,15 @@ public class Spawner : MonoBehaviour
     public GameObject[] enemyObject;
     public int enemyNumber;
     public Transform[] spawnPos;
+    public GameObject BattleWall;
+    public GameObject parentMonsterObject;
     void Start()
     {
         Spawn();
     }
     public void Spawn()
     {
+        BattleWall.SetActive(true);
         int enemyObjectInLine = 0;
         for(int i = 0; i < enemyNumber; i++)
         {
@@ -24,8 +27,16 @@ public class Spawner : MonoBehaviour
             while(spawnPos[randomPos].childCount > 0){
                 randomPos++;
             }
-            Instantiate(enemyObject[enemyObjectInLine], spawnPos[randomPos]);
+            GameObject monster = Instantiate(enemyObject[enemyObjectInLine], spawnPos[randomPos]);
+            monster.transform.SetParent(parentMonsterObject.transform);
             enemyObjectInLine++;
+        }
+    }
+    void Update()
+    {
+        if(parentMonsterObject.transform.childCount == 0){
+            BattleWall.SetActive(false);
+            Destroy(gameObject);
         }
     }
 }
