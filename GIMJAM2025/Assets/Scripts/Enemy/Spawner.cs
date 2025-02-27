@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject[] enemyObject;
+    [Header("Stats")]
     public int enemyNumber;
+    [Header("Referencing")]
+    public GameObject[] enemyObject;
     public Transform[] spawnPos;
     public GameObject BattleWall;
     public GameObject parentMonsterObject;
@@ -21,22 +23,25 @@ public class Spawner : MonoBehaviour
     }
     public void Spawn()
     {
-        if(BattleWall == null){
+        if (BattleWall == null)
+        {
             BattleWall = GameObject.Find("Boss Wall");
         }
-        if(parentMonsterObject == null){
+        if (parentMonsterObject == null)
+        {
             parentMonsterObject = GameObject.Find("Monsters");
         }
         BattleWall.SetActive(true);
         int enemyObjectInLine = 0;
-        for(int i = 0; i < enemyNumber; i++)
+        for (int i = 0; i < enemyNumber; i++)
         {
-            int randomPos = Random.Range(0, spawnPos.Length-1);
-            if(enemyObjectInLine > enemyObject.Length)
+            int randomPos = Random.Range(0, spawnPos.Length - 1);
+            if (enemyObjectInLine > enemyObject.Length)
             {
                 enemyObjectInLine = 0;
             }
-            while(spawnPos[randomPos].childCount > 0){
+            while (spawnPos[randomPos].childCount > 0)
+            {
                 randomPos++;
             }
             GameObject monster = Instantiate(enemyObject[enemyObjectInLine], spawnPos[randomPos]);
@@ -47,7 +52,8 @@ public class Spawner : MonoBehaviour
     }
     void Update()
     {
-        if(parentMonsterObject.transform.childCount == 0){
+        if (parentMonsterObject.transform.childCount == 0)
+        {
             BattleWall.SetActive(false);
             audioSource.clip = audioManager.map1Base;
             Destroy(gameObject);

@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour, IDamagable
 {
+    [field: Header("Stats")]
     [field: SerializeField] public int Health { get; set; }
 
     public void TakeDamage(int damage)
     {
         Health -= damage;
-        if(Health<=0)
+        if (Health <= 0)
         {
             Destroy(gameObject);
         }
     }
-    void Update()
-    {
-        
-    }
+    void Start() { }
+    void Update() { }
 }

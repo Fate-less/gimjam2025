@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class NerdAttack : Player, IAttacking
 {
+    [field: Header("Stats")]
     [field: SerializeField] public float attackDuration {get;set;}
     [field: SerializeField] public float attackMoveDistance {get;set;}
+    [SerializeField] float windUpDuration;
     public int attackDamage {get;set;}
+    public float knockbackDistance{get;set;}
+    [field: Header("Referencing")]
     [SerializeField] GameObject magicBallObject;
     private bool isAttacking = false;
     private bool castingDone = true;
     private float attackTime = 0f;
     private Vector3 attackDirection;
-    [SerializeField] float windUpDuration;
-    public float knockbackDistance{get;set;}
     private float windUpTime;
     private PlayerMovement playerMovement;
     private Animator animator;

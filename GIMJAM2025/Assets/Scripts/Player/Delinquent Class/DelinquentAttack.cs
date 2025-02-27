@@ -4,20 +4,22 @@ using UnityEngine;
 
 public class DelinquentAttack : Player, IAttacking
 {
+    [field: Header("Stats")]
     [field: SerializeField] public float attackDuration {get; set;}
     [field: SerializeField] public float attackMoveDistance {get; set;}
     [field: SerializeField] public int attackDamage {get; set;}
+    [field: SerializeField] public float knockbackDistance{get;set;}
+    [field: SerializeField] float windUpDuration {get;set;}
+    [field: SerializeField] float windUpDistance {get;set;}
+    private float windUpTime;
+    private bool attackDone, windUpDone;
     private bool isAttacking = false;
     private float attackTime = 0f;
     private Vector3 attackDirection;
-    [field: SerializeField] public float knockbackDistance{get;set;}
+    [Header("Referencing")]
     public Collider attackCollider;
-    private PlayerMovement playerMovement;
-    [field: SerializeField] float windUpDuration {get;set;}
-    [field: SerializeField] float windUpDistance {get;set;}
     public GameObject hitEffectObject;
-    private float windUpTime;
-    private bool attackDone, windUpDone;
+    private PlayerMovement playerMovement;
     private Animator animator;
     private TrailRenderer trailRenderer;
     private AudioManager audioManager;

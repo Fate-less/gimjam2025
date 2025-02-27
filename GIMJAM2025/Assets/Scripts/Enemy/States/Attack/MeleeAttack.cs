@@ -4,21 +4,22 @@ using UnityEngine;
 
 public class MeleeAttack : State, IAttacking
 {
-    [field: SerializeField] public float attackDuration {get; set;}
-    [field: SerializeField] public float attackMoveDistance {get; set;}
-    public int attackDamage {get; set;}
+    [field: Header("Stats")]
+    [field: SerializeField] public float attackDuration { get; set; }
+    [field: SerializeField] public float attackMoveDistance { get; set; }
+    public int attackDamage { get; set; }
     private bool isAttacking = false;
     private float attackTime = 0f;
     private Vector3 attackDirection;
-    public float knockbackDistance{get;set;}
-    public Collider attackCollider;
-    private Transform player;
-    [field: SerializeField] float windUpDuration {get;set;}
-    [field: SerializeField] float windUpDistance {get;set;}
+    [field: SerializeField] float windUpDuration { get; set; }
+    [field: SerializeField] float windUpDistance { get; set; }
     private float windUpTime;
     private bool attackDone, windUpDone;
+    public float knockbackDistance { get; set; }
+    [field: Header("Referencing")]
+    public Collider attackCollider;
+    private Transform player;
     private AudioManager audioManager;
-    bool isHit = false;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
@@ -37,24 +38,24 @@ public class MeleeAttack : State, IAttacking
         }
 
         if (isAttacking)
-        {         
+        {
             windUpTime += Time.deltaTime;
             attackTime += Time.deltaTime;
         }
-        if(player == null)
+        if (player == null)
         {
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         }
     }
     void FixedUpdate()
     {
-        if(!windUpDone)
+        if (!windUpDone)
         {
             GetComponent<Rigidbody>().AddForce(-attackDirection * windUpDistance, ForceMode.Impulse);
             Debug.Log("Windup");
             windUpDone = true;
         }
-        if(windUpTime >= windUpDuration && !attackDone)
+        if (windUpTime >= windUpDuration && !attackDone)
         {
             GetComponent<Rigidbody>().AddForce(attackDirection * attackMoveDistance, ForceMode.Impulse);
             Debug.Log("Attack");
@@ -93,16 +94,12 @@ public class MeleeAttack : State, IAttacking
 
     private void OnTriggerEnter(Collider other)
     {
-        GameObject playerObject = other.gameObject;
-        ManipulateIdentity playerIdentity = playerObject.GetComponent<ManipulateIdentity>();
-        if (playerIdentity == null) return;
-        Debug.Log("Player hit: " + playerObject.gameObject.name);
+        Player player = other.GetComponent<Player>();
+        if (player == null) return;
+        IdentityHandler identityHandler = player.gameObject.GetComponent<IdentityHandler>();
+        Debug.Log("Player hit: " + player.gameObject.name);
         AudioSource.PlayClipAtPoint(audioManager.heavyEnemiesKill, transform.position);
-        playerIdentity.SplitIdentity();
-        if (!isHit)
-        {
-            Destroy(gameObject);
-            isHit = true;
-        }
+        identityHandler.RemoveIdentity();
+        Destroy(gameObject);
     }
 }

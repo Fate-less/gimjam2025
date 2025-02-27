@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class MagicBall : MonoBehaviour
 {
+    [Header("Stats")]
     public float speed = 10f;
     public float lifetime = 3f;
     public float damage = 10f;
     public float knockbackForce = 5f;
+    [Header("Referencing")]
     public GameObject hitEffectObject;
     private AudioManager audioManager;
 

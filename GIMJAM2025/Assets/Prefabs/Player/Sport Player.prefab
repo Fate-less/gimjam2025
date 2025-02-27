@@ -225,9 +225,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
 --- !u!114 &1070077044000308425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -490,7 +490,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8610347717798493016}
-  - component: {fileID: 5292824288841160874}
+  - component: {fileID: 3955599943098854835}
   m_Layer: 0
   m_Name: CharHitbox
   m_TagString: Untagged
@@ -513,8 +513,8 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4725030197594492980}
   m_LocalEulerAnglesHint: {x: -25.915, y: 0, z: 0}
---- !u!65 &5292824288841160874
-BoxCollider:
+--- !u!136 &3955599943098854835
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -531,8 +531,10 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 6.5, z: 1}
+  serializedVersion: 2
+  m_Radius: 1
+  m_Height: 6
+  m_Direction: 1
   m_Center: {x: 0, y: -1, z: 0}
 --- !u!1 &7301966657599560131
 GameObject:

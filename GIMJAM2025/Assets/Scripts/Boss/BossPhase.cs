@@ -5,13 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class BossPhase : Enemy, IDamagable
 {
+    [Header("Stats")]
     public float spawnMobsCooldown;
     public float spinAttackCooldown;
     public float bombAttackCooldown;
+    [Header("Referencing")]
     public GameObject BOSS_SpawnMob;
     public GameObject BOSS_SpinAttack;
     public GameObject BOSS_BombAttack;
-
     private float spawnMobsTimer;
     private float spinAttackTimer;
     private float bombAttackTimer;
@@ -21,7 +22,7 @@ public class BossPhase : Enemy, IDamagable
     private Animator animator;
     private float phase;
     private float currentPhase;
-    
+
     void Start()
     {
         audioSource = GameObject.FindGameObjectWithTag("BGM").GetComponent<AudioSource>();
@@ -61,28 +62,34 @@ public class BossPhase : Enemy, IDamagable
                 phase = 3;
             }
         }
-        if(currentPhase != phase){
+        if (currentPhase != phase)
+        {
             ChangeBGM(Health);
         }
-        if (Health <= 10){
+        if (Health <= 10)
+        {
             SceneManager.LoadScene("Ending");
         }
     }
 
-    public void ChangeBGM(float health){
-        if(health < 70 && health > 40){
+    public void ChangeBGM(float health)
+    {
+        if (health < 70 && health > 40)
+        {
             animator.SetInteger("Phase", 2);
             audioSource.clip = audioManager.boss2BGM;
             audioSource.Play();
             currentPhase = 2;
         }
-        if(health < 40){
+        if (health < 40)
+        {
             animator.SetInteger("Phase", 3);
             audioSource.clip = audioManager.boss3BGM;
             audioSource.Play();
             currentPhase = 3;
         }
-        if (Health <= 10){
+        if (Health <= 10)
+        {
             SceneManager.LoadScene("Ending");
         }
     }

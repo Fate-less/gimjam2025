@@ -113,7 +113,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5492662917598999865}
-  - component: {fileID: 9053810495075483274}
+  - component: {fileID: 6530727870446364091}
   m_Layer: 0
   m_Name: CharHitbox
   m_TagString: Untagged
@@ -136,8 +136,8 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7723194157071964056}
   m_LocalEulerAnglesHint: {x: -25.915, y: 0, z: 0}
---- !u!65 &9053810495075483274
-BoxCollider:
+--- !u!136 &6530727870446364091
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -154,8 +154,10 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 6.5, z: 1}
+  serializedVersion: 2
+  m_Radius: 1
+  m_Height: 6.5
+  m_Direction: 1
   m_Center: {x: 0, y: -1, z: 0}
 --- !u!1 &5826707521928420464
 GameObject:
@@ -279,7 +281,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 112
-  m_CollisionDetection: 1
+  m_CollisionDetection: 3
 --- !u!114 &3807152052009667513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,7 +321,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <dashSpeed>k__BackingField: 10
   <dashDuration>k__BackingField: 0.001
-  <dashCooldown>k__BackingField: 5
+  <dashCooldown>k__BackingField: 3
 --- !u!114 &8053238088640360140
 MonoBehaviour:
   m_ObjectHideFlags: 0

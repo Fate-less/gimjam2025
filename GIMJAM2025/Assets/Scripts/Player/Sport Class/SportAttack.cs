@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SportAttack : Player, IAttacking
 {
+    [field: Header("Stats")]
     [field: SerializeField] public float attackDuration {get;set;}
     [field: SerializeField] public float attackMoveDistance {get;set;}
     [field: SerializeField] public int attackDamage {get;set;}
@@ -11,6 +12,7 @@ public class SportAttack : Player, IAttacking
     private float attackTime = 0f;
     private Vector3 attackDirection;
     [field: SerializeField] public float knockbackDistance{get;set;}
+    [field:Header("Referencing")]
     public Collider attackCollider;
     public GameObject SportSlashVFX;
     public GameObject hitEffectObject;

@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class RangeAttack : State, IAttacking
 {
-    [field: SerializeField] public float attackDuration {get;set;}
-    [field: SerializeField] public float attackMoveDistance {get;set;}
-    public int attackDamage {get;set;}
+    [field: Header("Stats")]
+    [field: SerializeField] public float attackDuration { get; set; }
+    [field: SerializeField] public float attackMoveDistance { get; set; }
+    public int attackDamage { get; set; }
+    public float knockbackDistance { get; set; }
+    [field: Header("Referencing")]
     [SerializeField] GameObject magicBallObject;
-    private bool isAttacking = false;
     private float attackTime = 0f;
     private Vector3 attackDirection;
-    public float knockbackDistance{get;set;}
     private Transform player;
     private AudioManager audioManager;
 
@@ -30,7 +31,7 @@ public class RangeAttack : State, IAttacking
             StartAttack();
             attackTime = 0;
         }
-        if(player == null)
+        if (player == null)
         {
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         }
@@ -45,5 +46,5 @@ public class RangeAttack : State, IAttacking
         EndAttack();
     }
 
-    public void EndAttack(){ }
+    public void EndAttack() { }
 }

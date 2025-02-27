@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class NerdDash : Player, IDashing
 {
+    [field: Header("Nerd Stats")]
     [field: SerializeField] public float dashSpeed {get;set;}
     [field: SerializeField] public float dashDuration {get;set;}
     [field: SerializeField] public float dashCooldown {get;set;}

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class StateMachine : MonoBehaviour
 {
+    [Header("Referencing")]
     public List<Condition> conditionList;
     public List<State> stateList;
 

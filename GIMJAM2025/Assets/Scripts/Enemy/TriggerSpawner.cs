@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TriggerSpawner : MonoBehaviour
 {
+    [Header("Referencing")]
     public GameObject spawnerObject;
     private AudioSource audioSource;
     private AudioManager audioManager;
@@ -14,7 +15,8 @@ public class TriggerSpawner : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player")){
+        if (other.CompareTag("Player"))
+        {
             audioSource.clip = audioManager.map1Battle;
             spawnerObject.SetActive(true);
             Destroy(gameObject);

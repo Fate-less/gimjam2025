@@ -4,17 +4,8 @@ using UnityEngine;
 
 public class Condition : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    void Start() { }
+    void Update() { }
     public virtual bool ConditionCheck()
     {
         return false;

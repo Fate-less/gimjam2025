@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Chase : State
 {
-    private Transform player;  // Assign the player's Transform in the inspector
+    [Header("Stats")]
     public float moveSpeed = 3f;
+    private Transform player;
     private Rigidbody rb;
 
     void Start()
@@ -18,11 +19,15 @@ public class Chase : State
     {
         try
         {
-            if(player==null)
+            if (player == null)
             {
                 player = GameObject.FindGameObjectWithTag("Player").transform;
             }
-        } catch {player = GameObject.FindGameObjectWithTag("Player").transform;}
+        }
+        catch
+        {
+            player = GameObject.FindGameObjectWithTag("Player").transform;
+        }
         float distance = Vector3.Distance(transform.position, player.position);
         ChasePlayer();
     }
@@ -30,7 +35,7 @@ public class Chase : State
     void ChasePlayer()
     {
         Vector3 direction = (player.position - transform.position).normalized;
-        if(rb.velocity.magnitude <= moveSpeed)
+        if (rb.velocity.magnitude <= moveSpeed)
         {
             rb.AddForce(direction * moveSpeed, ForceMode.VelocityChange);
         }

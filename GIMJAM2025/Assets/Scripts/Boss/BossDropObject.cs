@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class BossDropObject : MonoBehaviour
 {
-    public GameObject bombObject;
+    [Header("Stats")]
     public int bombNumber;
+    [Header("Referencing")]
+    public GameObject bombObject;
     public Transform[] spawnPos;
     private AudioManager audioManager;
     void Start()
@@ -16,11 +18,11 @@ public class BossDropObject : MonoBehaviour
     public void Spawn()
     {
         AudioSource.PlayClipAtPoint(audioManager.boss3Cast, transform.position);
-        for(int i = 0; i < bombNumber; i++)
+        for (int i = 0; i < bombNumber; i++)
         {
-            int randomPos = Random.Range(0, spawnPos.Length-1);
+            int randomPos = Random.Range(0, spawnPos.Length - 1);
             Instantiate(bombObject, spawnPos[randomPos]);
         }
-        Destroy(gameObject,5f);
+        Destroy(gameObject, 5f);
     }
 }

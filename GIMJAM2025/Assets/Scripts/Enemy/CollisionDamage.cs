@@ -5,7 +5,6 @@ using UnityEngine;
 public class CollisionDamage : MonoBehaviour
 {
     bool isHit = false;
-    float countDown = 0;
     private AudioManager audioManager;
     void Start()
     {
@@ -13,29 +12,16 @@ public class CollisionDamage : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        Player player = other.GetComponent<Player>();
+        if (player == null) return;
+        IdentityHandler identityHandler = player.gameObject.GetComponent<IdentityHandler>();
+        Debug.Log("Player hit: " + player.gameObject.name);
+        AudioSource.PlayClipAtPoint(audioManager.enemiesHit[Random.Range(0, 1)], transform.position);
+        identityHandler.RemoveIdentity();
+        if (!isHit)
         {
-            countDown += Time.deltaTime;
-            if(countDown>=2){
-                GameObject playerObject = other.gameObject;
-                if(playerObject.GetComponent<PlayerStatus>().isDead){
-                    return;
-                }
-                ManipulateIdentity playerIdentity = playerObject.GetComponent<ManipulateIdentity>();
-                if (playerIdentity == null) return;
-                Debug.Log("Player hit: " + playerObject.gameObject.name);
-                AudioSource.PlayClipAtPoint(audioManager.enemiesHit[Random.Range(0,1)], transform.position);
-                playerIdentity.SplitIdentity();
-                if (!isHit)
-                {
-                    Destroy(transform.parent.gameObject);
-                    isHit = true;
-                }
-            }
+            Destroy(transform.parent.gameObject);
+            isHit = true;
         }
-    }
-    void OnTriggerExit(Collider other)
-    {
-        countDown = 0;
     }
 }

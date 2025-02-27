@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Roam : State
 {
+    [Header("Stats")]
     public float moveSpeed = 3f;
     public float roamRadius = 10f;
     public float roamTime = 3f;
@@ -20,23 +21,19 @@ public class Roam : State
     {
         Roaming();
     }
-
     void Roaming()
     {
         roamTimer -= Time.deltaTime;
-
         if (roamTimer <= 0 || Vector3.Distance(transform.position, roamTarget) < 0.5f)
         {
             PickNewRoamTarget();
         }
-
         Vector3 direction = (roamTarget - transform.position).normalized;
-        if(rb.velocity.magnitude <= moveSpeed)
+        if (rb.velocity.magnitude <= moveSpeed)
         {
             rb.AddForce(direction * moveSpeed, ForceMode.Acceleration);
         }
     }
-
     void PickNewRoamTarget()
     {
         Vector2 randomPoint = Random.insideUnitCircle * roamRadius;

@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class SportDash : Player, IDashing
 {
+    [field: Header("Stats")]
     [field: SerializeField] public float dashSpeed {get;set;}
     [field: SerializeField] public float dashDuration {get;set;}
     [field: SerializeField] public float dashCooldown {get;set;}
     public float dashTime {get;set;}
     private bool isDashing = false;
-    private Vector3 dashDirection;
 
+    private Vector3 dashDirection;
     private PlayerMovement playerMovement;
     private TrailRenderer trailRenderer;
     private AudioManager audioManager;
+
     void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();

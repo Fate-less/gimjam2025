@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : Player
 {
+    [Header("Stats")]
     public float moveSpeed = 5f;
     private Vector3 moveDirection;
     private Animator animator;
@@ -29,7 +30,7 @@ public class PlayerMovement : Player
             { gameObject.GetComponent<SpriteRenderer>().flipX = false; }
         } else { animator.SetBool("isMoving", false); }
         moveDirection = new Vector3(moveX, 0f, moveZ).normalized;
-        transform.Translate(moveDirection * moveSpeed * Time.deltaTime, Space.World);
+        rb.MovePosition(transform.position + moveDirection * moveSpeed * Time.fixedDeltaTime);
     }
     public Vector3 GetMoveDirection()
     {
