@@ -119,8 +119,6 @@ GameObject:
   - component: {fileID: 1428662872116230634}
   - component: {fileID: 3539340411299718458}
   - component: {fileID: 8885154467084989566}
-  - component: {fileID: 6320754356703050962}
-  - component: {fileID: 1271565099543827054}
   - component: {fileID: 5392201379860763456}
   - component: {fileID: 8320934632910217059}
   - component: {fileID: 3098576756498207877}
@@ -280,7 +278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e41eeb57154095b4f951c67e51777480, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <attackDuration>k__BackingField: 1
+  <attackDuration>k__BackingField: 0.3
   <attackMoveDistance>k__BackingField: 1
   <attackDamage>k__BackingField: 2
   <knockbackDistance>k__BackingField: 15
@@ -288,44 +286,6 @@ MonoBehaviour:
   SportSlashVFX: {fileID: 7880005527949074959}
   hitEffectObject: {fileID: 2955623459812423943, guid: f5507a8c6a22c404ab324980c4e8a11b,
     type: 3}
---- !u!114 &6320754356703050962
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 917204500755926156}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1c8aa1646109084cbc25ffe3a25df54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerObjects:
-  - {fileID: 917204500755926156}
-  - {fileID: 5826707521928420464, guid: e4352515dcf3b9d4f84dcb725c80561a, type: 3}
-  - {fileID: 7639057162466599073, guid: c53efac969e4496409fcb5ef65349e96, type: 3}
-  ChangeIdentityCooldown: 2
-  DeadPlayer: {fileID: 7016514136060108441, guid: 2648f41df38b7084f9908c94151c60dd,
-    type: 3}
---- !u!114 &1271565099543827054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 917204500755926156}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9124075156926f45a6f91e9233ef742, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerSlot: 0
-  isDead: 0
-  reviveCooldown: 5
-  playerPrefab:
-  - {fileID: 917204500755926156}
-  - {fileID: 5826707521928420464, guid: e4352515dcf3b9d4f84dcb725c80561a, type: 3}
-  - {fileID: 7639057162466599073, guid: c53efac969e4496409fcb5ef65349e96, type: 3}
 --- !u!96 &5392201379860763456
 TrailRenderer:
   serializedVersion: 3

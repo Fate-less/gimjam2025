@@ -174,8 +174,6 @@ GameObject:
   - component: {fileID: 2236862230302850129}
   - component: {fileID: 3785150951804776073}
   - component: {fileID: 8053238088640360140}
-  - component: {fileID: 3733860006193021766}
-  - component: {fileID: 4735603802763679580}
   - component: {fileID: 2735769371825926126}
   - component: {fileID: 4783616591547546876}
   - component: {fileID: 46575622854468090}
@@ -321,7 +319,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <dashSpeed>k__BackingField: 10
   <dashDuration>k__BackingField: 0.001
-  <dashCooldown>k__BackingField: 3
+  <dashCooldown>k__BackingField: 1.5
 --- !u!114 &8053238088640360140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -338,48 +336,10 @@ MonoBehaviour:
   <attackMoveDistance>k__BackingField: 50
   <attackDamage>k__BackingField: 3
   <knockbackDistance>k__BackingField: 30
-  attackCollider: {fileID: 1014004970466900646}
   <windUpDuration>k__BackingField: 0.3
   <windUpDistance>k__BackingField: 15
+  attackCollider: {fileID: 1014004970466900646}
   hitEffectObject: {fileID: 5024009746357069194, guid: ec3f674830402cc45bce805cf6493db7,
-    type: 3}
---- !u!114 &3733860006193021766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5826707521928420464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9124075156926f45a6f91e9233ef742, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerSlot: 1
-  isDead: 0
-  reviveCooldown: 5
-  playerPrefab:
-  - {fileID: 917204500755926156, guid: a8a4774b719d99a4a93e98b4bc68e244, type: 3}
-  - {fileID: 5826707521928420464}
-  - {fileID: 7639057162466599073, guid: c53efac969e4496409fcb5ef65349e96, type: 3}
---- !u!114 &4735603802763679580
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5826707521928420464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1c8aa1646109084cbc25ffe3a25df54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerObjects:
-  - {fileID: 917204500755926156, guid: a8a4774b719d99a4a93e98b4bc68e244, type: 3}
-  - {fileID: 5826707521928420464}
-  - {fileID: 7639057162466599073, guid: c53efac969e4496409fcb5ef65349e96, type: 3}
-  ChangeIdentityCooldown: 2
-  DeadPlayer: {fileID: 7016514136060108441, guid: 2648f41df38b7084f9908c94151c60dd,
     type: 3}
 --- !u!96 &2735769371825926126
 TrailRenderer:

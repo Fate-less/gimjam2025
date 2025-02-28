@@ -31,7 +31,8 @@ public class IdentityHandler : Handler
 
     public void SwitchIdentity(int identity)
     {
-        if (playerObjects[identity] == gameObject) return;
+        if (playerObjects[identity] == playerObjects[currentCharacterIndex]) return;
+        playerObjects[identity].transform.position = playerObjects[currentCharacterIndex].transform.position;
         playerObjects[currentCharacterIndex].SetActive(false);
         playerObjects[identity].SetActive(true);
         RetrackVCam(playerObjects[identity]);
@@ -59,7 +60,6 @@ public class IdentityHandler : Handler
     private void RetrackVCam(GameObject newIdentity)
     {
         GameObject.FindGameObjectWithTag("VCam").GetComponent<CinemachineVirtualCamera>().Follow = newIdentity.transform;
-        GameObject.FindGameObjectWithTag("VCam").GetComponent<CinemachineVirtualCamera>().LookAt = newIdentity.transform;
     }
     public void ReviveDeadPlayer()
     {
