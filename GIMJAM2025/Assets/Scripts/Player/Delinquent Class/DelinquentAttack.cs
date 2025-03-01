@@ -28,7 +28,7 @@ public class DelinquentAttack : Player, IAttacking
         playerMovement = GetComponentInParent<PlayerMovement>();
         animator = GetComponent<Animator>();
         trailRenderer = GetComponent<TrailRenderer>();
-        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        audioManager = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
         if (attackCollider != null)
         {
             attackCollider.enabled = false;

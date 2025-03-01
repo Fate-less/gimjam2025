@@ -19,7 +19,7 @@ public class RangeAttack : State, IAttacking
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        audioManager = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
         attackTime = 0;
     }
 

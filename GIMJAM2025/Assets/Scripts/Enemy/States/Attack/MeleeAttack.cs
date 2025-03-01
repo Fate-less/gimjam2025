@@ -20,10 +20,12 @@ public class MeleeAttack : State, IAttacking
     public Collider attackCollider;
     private Transform player;
     private AudioManager audioManager;
+    private IdentityHandler identityHandler;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        audioManager = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
+        identityHandler = GameObject.Find("Game Handler").GetComponent<IdentityHandler>();
         if (attackCollider != null)
         {
             attackCollider.enabled = false;
@@ -96,7 +98,6 @@ public class MeleeAttack : State, IAttacking
     {
         Player player = other.GetComponent<Player>();
         if (player == null) return;
-        IdentityHandler identityHandler = player.gameObject.GetComponent<IdentityHandler>();
         Debug.Log("Player hit: " + player.gameObject.name);
         AudioSource.PlayClipAtPoint(audioManager.heavyEnemiesKill, transform.position);
         identityHandler.RemoveIdentity();

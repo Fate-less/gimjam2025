@@ -9,7 +9,7 @@ public class CollisionDamage : MonoBehaviour
     private IdentityHandler identityHandler;
     void Start()
     {
-        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        audioManager = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
         identityHandler = GameObject.Find("Game Handler").GetComponent<IdentityHandler>();
     }
     private void OnTriggerEnter(Collider other)

@@ -20,7 +20,7 @@ public class SportDash : Player, IDashing
     {
         playerMovement = GetComponent<PlayerMovement>();
         trailRenderer = GetComponent<TrailRenderer>();
-        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        audioManager = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
         if (trailRenderer != null)
         {
             trailRenderer.enabled = false;

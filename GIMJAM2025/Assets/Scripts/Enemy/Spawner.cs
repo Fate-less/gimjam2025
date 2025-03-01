@@ -15,11 +15,11 @@ public class Spawner : MonoBehaviour
     private AudioManager audioManager;
     void Start()
     {
-        Spawn();
         audioSource = GameObject.FindGameObjectWithTag("BGM").GetComponent<AudioSource>();
-        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
-        BattleWall = GameObject.Find("Boss Wall");
+        audioManager = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
+        BattleWall = GameObject.Find("Battle Wall");
         parentMonsterObject = GameObject.Find("Monsters");
+        Spawn();
     }
     public void Spawn()
     {
@@ -36,7 +36,7 @@ public class Spawner : MonoBehaviour
         for (int i = 0; i < enemyNumber; i++)
         {
             int randomPos = Random.Range(0, spawnPos.Length - 1);
-            if (enemyObjectInLine > enemyObject.Length)
+            if (enemyObjectInLine > enemyObject.Length - 1)
             {
                 enemyObjectInLine = 0;
             }
@@ -45,6 +45,8 @@ public class Spawner : MonoBehaviour
                 randomPos++;
             }
             GameObject monster = Instantiate(enemyObject[enemyObjectInLine], spawnPos[randomPos]);
+            Debug.Log("enemyObjectInLine: " + enemyObjectInLine);
+            Debug.Log("randomPos: " + randomPos);
             monster.transform.SetParent(parentMonsterObject.transform);
             enemyObjectInLine++;
         }

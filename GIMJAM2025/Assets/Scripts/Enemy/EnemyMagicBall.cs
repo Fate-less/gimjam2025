@@ -16,7 +16,7 @@ public class EnemyMagicBall : MonoBehaviour
     void Start()
     {
         Destroy(gameObject, lifetime);
-        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        audioManager = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
         identityHandler = GameObject.Find("Game Handler").GetComponent<IdentityHandler>();
         AudioSource.PlayClipAtPoint(audioManager.nerdHit, transform.position);
     }

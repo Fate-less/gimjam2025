@@ -40,6 +40,7 @@ public class IdentityHandler : Handler
     }
     public void RemoveIdentity()
     {
+        Debug.Log(playerObjects[currentCharacterIndex].name);
         deadPlayerObjects.Add(playerObjects[currentCharacterIndex]);
         if (currentCharacterIndex >= 2) SwitchIdentity(currentCharacterIndex - 1);
         else SwitchIdentity(currentCharacterIndex + 1);

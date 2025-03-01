@@ -19,11 +19,13 @@ public class NerdAttack : Player, IAttacking
     private float windUpTime;
     private PlayerMovement playerMovement;
     private Animator animator;
+    private AudioManager audioManager;
 
     void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
         animator = GetComponent<Animator>();
+        audioManager = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
     }
 
     void Update()
@@ -65,6 +67,7 @@ public class NerdAttack : Player, IAttacking
         attackTime = 0f;
         playerMovement.enabled = false;
         animator.SetBool("isAttacking", true);
+        AudioSource.PlayClipAtPoint(audioManager.nerdCast, transform.position);
         // Calculate attack direction from mouse position
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;

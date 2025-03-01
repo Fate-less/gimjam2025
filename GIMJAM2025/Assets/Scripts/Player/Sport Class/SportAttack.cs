@@ -28,7 +28,7 @@ public class SportAttack : Player, IAttacking
         {
             attackCollider.enabled = false;
         }
-        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        audioManager = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
     }
 
     void Update()

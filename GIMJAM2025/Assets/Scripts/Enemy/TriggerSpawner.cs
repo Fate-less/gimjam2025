@@ -11,7 +11,7 @@ public class TriggerSpawner : MonoBehaviour
     void Start()
     {
         audioSource = GameObject.FindGameObjectWithTag("BGM").GetComponent<AudioSource>();
-        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        audioManager = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
     }
     void OnTriggerEnter(Collider other)
     {
