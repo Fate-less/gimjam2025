@@ -28,9 +28,10 @@ public class PlayerMovement : Player
             }
             else if (moveX > 0)
             { gameObject.GetComponent<SpriteRenderer>().flipX = false; }
-        } else { animator.SetBool("isMoving", false); }
+        } else animator.SetBool("isMoving", false);
         moveDirection = new Vector3(moveX, 0f, moveZ).normalized;
-        rb.MovePosition(transform.position + moveDirection * moveSpeed * Time.fixedDeltaTime);
+        rb.AddForce(moveDirection * moveSpeed, ForceMode.VelocityChange);
+        rb.velocity = Vector3.ClampMagnitude(rb.velocity, moveSpeed);
     }
     public Vector3 GetMoveDirection()
     {

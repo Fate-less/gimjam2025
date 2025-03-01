@@ -208,7 +208,7 @@ Rigidbody:
   m_GameObject: {fileID: 917204500755926156}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 3
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -250,7 +250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28e13968e1ac2a74d8e3d87d396fdcbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 5
 --- !u!114 &3539340411299718458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,7 +263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3241b4c834ff6804fb8d014eab636a56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <dashSpeed>k__BackingField: 20
+  <dashSpeed>k__BackingField: 30
   <dashDuration>k__BackingField: 0.5
   <dashCooldown>k__BackingField: 5
 --- !u!114 &8885154467084989566

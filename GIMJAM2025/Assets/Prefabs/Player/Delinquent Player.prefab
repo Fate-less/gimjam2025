@@ -304,7 +304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28e13968e1ac2a74d8e3d87d396fdcbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 2.5
 --- !u!114 &3785150951804776073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,7 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f001e3cd17adb04dab173feee272979, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <dashSpeed>k__BackingField: 10
+  <dashSpeed>k__BackingField: 20
   <dashDuration>k__BackingField: 0.001
   <dashCooldown>k__BackingField: 1.5
 --- !u!114 &8053238088640360140

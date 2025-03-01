@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Opening.unity
     guid: fce4f72900d3a394497d650fde2d9e31
   - enabled: 1
-    path: Assets/Scenes/Gameplay.unity
+    path: Assets/Scenes/Ampas.unity
     guid: aeb8137243e1e79489c2b7a7cf00302d
   - enabled: 1
     path: Assets/Scenes/Ending.unity
