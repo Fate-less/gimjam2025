@@ -5,14 +5,13 @@ using UnityEngine;
 public class NerdDash : Player, IDashing
 {
     [field: Header("Nerd Stats")]
-    [field: SerializeField] public float dashSpeed {get;set;}
-    [field: SerializeField] public float dashDuration {get;set;}
-    [field: SerializeField] public float dashCooldown {get;set;}
-    public float dashTime {get;set;}
-    [SerializeField] private LayerMask wallLayer;
+    [field: SerializeField] public float dashSpeed { get; set; }
+    [field: SerializeField] public float dashDuration { get; set; }
+    [field: SerializeField] public float dashCooldown { get; set; }
+    public float dashTime { get; set; }
+    [SerializeField] private LayerMask prohibitedLayer;
     private bool isDashing = false;
     private Vector3 dashDirection;
-
     private PlayerMovement playerMovement;
     private TrailRenderer trailRenderer;
     private AudioManager audioManager;
@@ -49,18 +48,15 @@ public class NerdDash : Player, IDashing
         isDashing = true;
         dashTime = dashDuration;
         dashDirection = playerMovement.GetMoveDirection();
-        Vector3 dashVelocity = dashDirection * dashSpeed;
-        Vector3 teleportTarget = transform.position + dashDirection * dashSpeed;
         AudioSource.PlayClipAtPoint(audioManager.nerdAbilities, transform.position);
-        if (!Physics.Raycast(transform.position, dashDirection, dashSpeed, wallLayer))
+        Vector3 teleportTarget = transform.position + dashDirection * dashSpeed;
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, dashDirection, out hit, dashSpeed, prohibitedLayer))
         {
-            transform.position = teleportTarget;
-            Debug.Log("Teleported to: " + teleportTarget);
+            teleportTarget = hit.point;
+            Debug.Log("Hit wall, stopping at: " + teleportTarget);
         }
-        if (trailRenderer != null)
-        {
-            trailRenderer.enabled = true;
-        }
+        transform.position = teleportTarget;
         playerMovement.enabled = false;
     }
 
@@ -68,10 +64,6 @@ public class NerdDash : Player, IDashing
     {
         isDashing = false;
         GetComponent<Rigidbody>().velocity = Vector3.zero;
-        if (trailRenderer != null)
-        {
-            trailRenderer.enabled = false;
-        }
         Invoke(nameof(ResetDashCooldown), dashCooldown);
         playerMovement.enabled = true;
     }

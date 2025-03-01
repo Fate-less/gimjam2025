@@ -84,7 +84,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bfe35fa4d902344488537df3d54b45c6, type: 3}
+  m_Sprite: {fileID: -1092511876, guid: 9e2febab35d9f424991801666d7a2461, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -193,9 +193,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <attackDuration>k__BackingField: 1
   <attackMoveDistance>k__BackingField: 50
-  attackCollider: {fileID: 6729944368427733374}
-  <windUpDuration>k__BackingField: 0
+  <windUpDuration>k__BackingField: 0.2
   <windUpDistance>k__BackingField: 0
+  attackCollider: {fileID: 6729944368427733374}
 --- !u!114 &7401884319813403674
 MonoBehaviour:
   m_ObjectHideFlags: 0

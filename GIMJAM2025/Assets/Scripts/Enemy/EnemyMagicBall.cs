@@ -11,11 +11,13 @@ public class EnemyMagicBall : MonoBehaviour
     [Header("Referencing")]
     public GameObject hitEffectObject;
     private AudioManager audioManager;
+    private IdentityHandler identityHandler;
 
     void Start()
     {
         Destroy(gameObject, lifetime);
         audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        identityHandler = GameObject.Find("Game Handler").GetComponent<IdentityHandler>();
         AudioSource.PlayClipAtPoint(audioManager.nerdHit, transform.position);
     }
     void Update()
@@ -30,7 +32,6 @@ public class EnemyMagicBall : MonoBehaviour
             Destroy(gameObject);
         }
         if (player == null) return;
-        IdentityHandler identityHandler = player.GetComponent<IdentityHandler>();
         identityHandler.RemoveIdentity();
         Debug.Log("Player hit: " + player.gameObject.name);
         Destroy(gameObject);

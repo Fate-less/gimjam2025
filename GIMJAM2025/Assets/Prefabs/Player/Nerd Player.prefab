@@ -264,7 +264,7 @@ MonoBehaviour:
   <dashSpeed>k__BackingField: 5
   <dashDuration>k__BackingField: 1
   <dashCooldown>k__BackingField: 5
-  wallLayer:
+  prohibitedLayer:
     serializedVersion: 2
     m_Bits: 8
 --- !u!114 &786467063299458599
