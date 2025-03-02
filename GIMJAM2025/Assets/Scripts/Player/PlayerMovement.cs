@@ -22,13 +22,10 @@ public class PlayerMovement : Player
         if(moveX != 0 || moveZ != 0)
         {
             animator.SetBool("isMoving", true);
-            if(moveX < 0)
-            {
-                gameObject.GetComponent<SpriteRenderer>().flipX = true;
-            }
-            else if (moveX > 0)
-            { gameObject.GetComponent<SpriteRenderer>().flipX = false; }
-        } else animator.SetBool("isMoving", false);
+            animator.SetFloat("Horizontal", moveX);
+            animator.SetFloat("Vertical", moveZ);
+        } 
+        else animator.SetBool("isMoving", false);
         moveDirection = new Vector3(moveX, 0f, moveZ).normalized;
         rb.AddForce(moveDirection * moveSpeed, ForceMode.VelocityChange);
         rb.velocity = Vector3.ClampMagnitude(rb.velocity, moveSpeed);

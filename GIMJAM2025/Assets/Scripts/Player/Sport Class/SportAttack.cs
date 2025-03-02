@@ -11,8 +11,8 @@ public class SportAttack : Player, IAttacking
     private bool isAttacking = false;
     private float attackTime = 0f;
     private Vector3 attackDirection;
-    [field: SerializeField] public float knockbackDistance{get;set;}
-    [field:Header("Referencing")]
+    [field: SerializeField] public float knockbackDistance {get;set;}
+    [field: Header("Referencing")]
     public Collider attackCollider;
     public GameObject SportSlashVFX;
     public GameObject hitEffectObject;
@@ -37,7 +37,6 @@ public class SportAttack : Player, IAttacking
         {
             StartAttack();
         }
-
         if (isAttacking)
         {
             attackTime += Time.deltaTime;
