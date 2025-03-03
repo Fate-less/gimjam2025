@@ -26,13 +26,23 @@ public class ShadowPlayerMovement : Player
                 leftShadowAnimator.SetBool("isMoving", false);
                 leftShadow.SetActive(false);
                 rightShadow.SetActive(true);
-                rightShadowAnimator.SetBool("isMoving", true);
+                rightShadowAnimator.SetFloat("Horizontal", moveX);
             }
             else if (moveX > 0)
             {
                 rightShadowAnimator.SetBool("isMoving", false);
                 rightShadow.SetActive(false);
                 leftShadow.SetActive(true);
+                leftShadowAnimator.SetFloat("Horizontal", moveX);
+            }
+            if (rightShadow.activeInHierarchy)
+            {
+                rightShadowAnimator.SetFloat("Vertical", moveZ);
+                rightShadowAnimator.SetBool("isMoving", true);
+            }
+            else
+            {
+                leftShadowAnimator.SetFloat("Vertical", moveZ);
                 leftShadowAnimator.SetBool("isMoving", true);
             }
         }
