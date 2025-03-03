@@ -5,10 +5,10 @@ using UnityEngine;
 public class DelinquentDash : Player, IDashing
 {
     [field: Header("Stats")]
-    [field: SerializeField] public float dashSpeed {get;set;}
-    [field: SerializeField] public float dashDuration {get;set;}
-    [field: SerializeField] public float dashCooldown {get;set;}
-    public float dashTime {get;set;}
+    [field: SerializeField] public float dashSpeed { get; set; }
+    [field: SerializeField] public float dashDuration { get; set; }
+    [field: SerializeField] public float dashCooldown { get; set; }
+    public float dashTime { get; set; }
     private bool isDashing = false;
     private Vector3 dashDirection;
     private Vector3 dashVelocity;
@@ -45,7 +45,6 @@ public class DelinquentDash : Player, IDashing
     {
         if (dashTime <= 0f && isDashing)
         {
-            GetComponent<Rigidbody>().AddForce(dashVelocity, ForceMode.Impulse);
             StopDash();
         }
     }
@@ -63,6 +62,7 @@ public class DelinquentDash : Player, IDashing
             trailRenderer.enabled = true;
         }
         playerMovement.enabled = false;
+        GetComponent<Rigidbody>().MovePosition(new Vector3(transform.position.x + dashSpeed * Input.GetAxis("Horizontal"), dashVelocity.y, transform.position.z));
     }
 
     public void StopDash()

@@ -12,8 +12,8 @@ public class BossDropObject : MonoBehaviour
     private AudioManager audioManager;
     void Start()
     {
+        audioManager = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
         Spawn();
-        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
     }
     public void Spawn()
     {

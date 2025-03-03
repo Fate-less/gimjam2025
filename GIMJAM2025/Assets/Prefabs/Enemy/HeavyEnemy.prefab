@@ -191,10 +191,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50bb2101a74e9d04388c96b12f7479f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <attackDuration>k__BackingField: 1
-  <attackMoveDistance>k__BackingField: 50
-  <windUpDuration>k__BackingField: 0.2
-  <windUpDistance>k__BackingField: 0
+  <attackDuration>k__BackingField: 0.3
+  <attackMoveDistance>k__BackingField: 15
+  <windUpDuration>k__BackingField: 0.15
+  <windUpDistance>k__BackingField: 8
   attackCollider: {fileID: 6729944368427733374}
 --- !u!114 &7401884319813403674
 MonoBehaviour:

@@ -14,7 +14,7 @@ public class BossSpinAttack : MonoBehaviour
     private float timer = 0f;
     void Start()
     {
-        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        audioManager = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
         AudioSource.PlayClipAtPoint(audioManager.boss2Abilities, transform.position);
     }
     void Update()
@@ -25,7 +25,7 @@ public class BossSpinAttack : MonoBehaviour
         float randomValue = Random.Range(0.1f, 0.5f);
         if (attackDelay > randomValue)
         {
-            Instantiate(magicBall, transform.position, transform.rotation);
+            Instantiate(magicBall, new Vector3(transform.position.x, 0, transform.position.z), transform.rotation);
             attackDelay = 0;
         }
         timer += Time.deltaTime;

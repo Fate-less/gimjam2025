@@ -12,7 +12,7 @@ public class BossBomb : MonoBehaviour
     private AudioManager audioManager;
     void Start()
     {
-        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        audioManager = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
     }
     void OnCollisionEnter(Collision other)
     {

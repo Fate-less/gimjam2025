@@ -10,7 +10,7 @@ public class IdentityHandler : Handler
     public GameObject dummyDeadBody;
     [Header("Stats")]
     public float ChangeIdentityCooldown;
-    private List<GameObject> deadPlayerObjects;
+    public List<GameObject> deadPlayerObjects;
     private int currentCharacterIndex;
     private float CurrentChangeIdentityCooldown;
     void Start()
@@ -32,6 +32,7 @@ public class IdentityHandler : Handler
     public void SwitchIdentity(int identity)
     {
         if (playerObjects[identity] == playerObjects[currentCharacterIndex]) return;
+        if (!IsIdentityAlive(playerObjects[identity])) return;
         playerObjects[identity].transform.position = playerObjects[currentCharacterIndex].transform.position;
         playerObjects[currentCharacterIndex].SetActive(false);
         playerObjects[identity].SetActive(true);
@@ -42,13 +43,15 @@ public class IdentityHandler : Handler
     {
         Debug.Log(playerObjects[currentCharacterIndex].name);
         deadPlayerObjects.Add(playerObjects[currentCharacterIndex]);
+        ThrowOutDeadIdentity(playerObjects[currentCharacterIndex]);
         if (currentCharacterIndex >= 2) SwitchIdentity(currentCharacterIndex - 1);
         else SwitchIdentity(currentCharacterIndex + 1);
     }
     public void ThrowOutDeadIdentity(GameObject deadPlayer)
     {
         dummyDeadBody.GetComponent<SpriteRenderer>().sprite = deadPlayer.GetComponent<SpriteRenderer>().sprite;
-        Instantiate(dummyDeadBody, transform.position, transform.rotation);
+        dummyDeadBody.transform.localScale = deadPlayer.transform.localScale;
+        Instantiate(dummyDeadBody, deadPlayer.transform.position, deadPlayer.transform.rotation);
     }
     public bool IsIdentityAlive(GameObject playerObject)
     {

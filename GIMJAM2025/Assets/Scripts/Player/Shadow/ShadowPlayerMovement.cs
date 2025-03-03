@@ -5,14 +5,11 @@ using UnityEngine;
 public class ShadowPlayerMovement : Player
 {
     [Header("Referencing")]
-    public GameObject leftShadow;
-    public GameObject rightShadow;
-    private Animator leftShadowAnimator;
-    private Animator rightShadowAnimator;
+    public GameObject shadowObject;
+    private Animator shadowAnimator;
     void Start()
     {
-        leftShadowAnimator = leftShadow.GetComponent<Animator>();
-        rightShadowAnimator = rightShadow.GetComponent<Animator>();
+        shadowAnimator = shadowObject.GetComponent<Animator>();
     }
 
     void FixedUpdate()
@@ -23,33 +20,20 @@ public class ShadowPlayerMovement : Player
         {
             if (moveX < 0)
             {
-                leftShadowAnimator.SetBool("isMoving", false);
-                leftShadow.SetActive(false);
-                rightShadow.SetActive(true);
-                rightShadowAnimator.SetFloat("Horizontal", moveX);
+                shadowAnimator.SetBool("isMoving", false);
+                shadowAnimator.SetFloat("Horizontal", moveX);
             }
             else if (moveX > 0)
             {
-                rightShadowAnimator.SetBool("isMoving", false);
-                rightShadow.SetActive(false);
-                leftShadow.SetActive(true);
-                leftShadowAnimator.SetFloat("Horizontal", moveX);
+                shadowAnimator.SetBool("isMoving", false);
+                shadowAnimator.SetFloat("Horizontal", moveX);
             }
-            if (rightShadow.activeInHierarchy)
-            {
-                rightShadowAnimator.SetFloat("Vertical", moveZ);
-                rightShadowAnimator.SetBool("isMoving", true);
-            }
-            else
-            {
-                leftShadowAnimator.SetFloat("Vertical", moveZ);
-                leftShadowAnimator.SetBool("isMoving", true);
-            }
+            shadowAnimator.SetFloat("Vertical", moveZ);
+            shadowAnimator.SetBool("isMoving", true);
         }
         else 
         {
-            if (rightShadow.activeInHierarchy) rightShadowAnimator.SetBool("isMoving", false);
-            else leftShadowAnimator.SetBool("isMoving", false);
+            shadowAnimator.SetBool("isMoving", false);
         }
     }
 }

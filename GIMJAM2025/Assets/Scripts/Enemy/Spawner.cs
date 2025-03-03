@@ -9,29 +9,24 @@ public class Spawner : MonoBehaviour
     [Header("Referencing")]
     public GameObject[] enemyObject;
     public Transform[] spawnPos;
-    public GameObject BattleWall;
+    public GameObject floorIntersectObject;
+    public Transform floorIntersectOpenPos;
     public GameObject parentMonsterObject;
-    private AudioSource audioSource;
     private AudioManager audioManager;
+    private IdentityHandler identityHandler;
     void Start()
     {
-        audioSource = GameObject.FindGameObjectWithTag("BGM").GetComponent<AudioSource>();
         audioManager = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
-        BattleWall = GameObject.Find("Battle Wall");
         parentMonsterObject = GameObject.Find("Monsters");
+        identityHandler = GameObject.Find("Game Handler").GetComponent<IdentityHandler>();
         Spawn();
     }
     public void Spawn()
     {
-        if (BattleWall == null)
-        {
-            BattleWall = GameObject.Find("Boss Wall");
-        }
         if (parentMonsterObject == null)
         {
             parentMonsterObject = GameObject.Find("Monsters");
         }
-        BattleWall.SetActive(true);
         int enemyObjectInLine = 0;
         for (int i = 0; i < enemyNumber; i++)
         {
@@ -56,9 +51,9 @@ public class Spawner : MonoBehaviour
     {
         if (parentMonsterObject.transform.childCount == 0)
         {
-            BattleWall.SetActive(false);
-            audioSource.clip = audioManager.map1Base;
-            Destroy(gameObject);
+            identityHandler.ReviveDeadPlayer();
+            LeanTween.moveLocal(floorIntersectObject, floorIntersectOpenPos.position, 0.9f).setEaseOutQuad();
+            Destroy(gameObject, 1f);
         }
     }
 }
