@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour, IDamagable
 
     public void TakeDamage(int damage)
     {
+        GetComponent<DamageFlash>().Flash();
         Health -= damage;
         if (Health <= 0)
         {

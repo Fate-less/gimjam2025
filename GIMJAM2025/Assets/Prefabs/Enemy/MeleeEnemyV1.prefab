@@ -215,6 +215,7 @@ GameObject:
   - component: {fileID: 810759467246881193}
   - component: {fileID: 7307064706647069422}
   - component: {fileID: 670539213328019131}
+  - component: {fileID: 1714630825251912967}
   m_Layer: 0
   m_Name: MeleeEnemyV1
   m_TagString: Enemy
@@ -260,7 +261,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: eb3abd90ac1269e4dbe31248ccac315b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -437,6 +438,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1714630825251912967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8832721618125639726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59ec42456225bf44fa02e30fdc2d181f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashProperty: _FlashAmount
+  flashIntensity: 100
+  flashDuration: 0.1
+  flashCount: 2
 --- !u!1 &9181465622521204891
 GameObject:
   m_ObjectHideFlags: 0

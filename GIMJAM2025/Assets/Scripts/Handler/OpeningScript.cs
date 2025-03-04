@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class OpeningScript : Handler
 {
     VideoPlayer videoPlayer;
+    public string sceneName;
 
     void Start()
     {
@@ -23,6 +24,6 @@ public class OpeningScript : Handler
 
     void OnLoopPointReached(VideoPlayer vp)
     {
-        SceneManager.LoadScene("Gameplay");
+        SceneManager.LoadScene(sceneName);
     }
 }

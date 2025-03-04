@@ -19,6 +19,10 @@ public class MenuButtons : MonoBehaviour
     }
     public void IngameExitButton()
     {
+        if(Time.timeScale < 1)
+        {
+            Time.timeScale = 1;
+        }
         SceneManager.LoadScene("Main menu");
     }
     public void MainmenuExitButton()
