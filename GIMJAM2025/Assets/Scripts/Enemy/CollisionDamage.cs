@@ -21,7 +21,7 @@ public class CollisionDamage : MonoBehaviour
         identityHandler.RemoveIdentity();
         if (!isHit)
         {
-            Destroy(transform.parent.gameObject);
+            Destroy(gameObject);
             isHit = true;
         }
     }

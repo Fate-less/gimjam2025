@@ -52,6 +52,10 @@ public class IdentityHandler : Handler
         dummyDeadBody.GetComponent<SpriteRenderer>().sprite = deadPlayer.GetComponent<SpriteRenderer>().sprite;
         dummyDeadBody.transform.localScale = deadPlayer.transform.localScale;
         Instantiate(dummyDeadBody, deadPlayer.transform.position, deadPlayer.transform.rotation);
+        if(deadPlayerObjects.Count >= 3)
+        {
+            GetComponent<PopGameOver>().CallGameOver();
+        }
     }
     public bool IsIdentityAlive(GameObject playerObject)
     {

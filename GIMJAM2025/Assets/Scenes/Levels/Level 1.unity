@@ -204,7 +204,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 72408220}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 442160333}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
+        m_MethodName: IngameExitButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &72408220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1302,6 +1314,8 @@ GameObject:
   - component: {fileID: 442160331}
   - component: {fileID: 442160330}
   - component: {fileID: 442160332}
+  - component: {fileID: 442160333}
+  - component: {fileID: 442160334}
   m_Layer: 0
   m_Name: Game Handler
   m_TagString: Untagged
@@ -1357,6 +1371,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuObject: {fileID: 1311526612}
+--- !u!114 &442160333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442160329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37f98103e3cbd9b489f13ae6f1049890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &442160334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442160329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d7c4cb224cb8fd49beaea207c12020d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameOverObject: {fileID: 263537370}
 --- !u!1 &515248405
 GameObject:
   m_ObjectHideFlags: 3
@@ -2285,7 +2324,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 889769995}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 442160333}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
+        m_MethodName: RestartButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &889769995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2406,7 +2457,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 965375876}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &965375876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2602,7 +2665,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1123696458}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 442160333}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
+        m_MethodName: IngameExitButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1123696458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2723,7 +2798,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1240021597}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 442160333}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
+        m_MethodName: ResumeButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1240021597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3707,7 +3794,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1862531386}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 442160333}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
+        m_MethodName: RestartButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1862531386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4815,6 +4914,7 @@ SceneRoots:
   - {fileID: 1424768465}
   - {fileID: 1690778012}
   - {fileID: 600077592}
+  - {fileID: 2127661812}
   - {fileID: 384385547}
   - {fileID: 657465805490488396}
   - {fileID: 6051478245668831901}
@@ -4823,4 +4923,3 @@ SceneRoots:
   - {fileID: 231921076}
   - {fileID: 1976863022}
   - {fileID: 790715407}
-  - {fileID: 2127661812}

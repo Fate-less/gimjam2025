@@ -11,18 +11,23 @@ public class PopPauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (isPausing)
-            {
-                pauseMenuObject.SetActive(false);
-                Time.timeScale = 1;
-                isPausing = false;
-            }
-            else
-            {
-                pauseMenuObject.SetActive(true);
-                Time.timeScale = 0;
-                isPausing = true;
-            }
+            CallPause();
+        }
+    }
+
+    public void CallPause()
+    {
+        if (isPausing)
+        {
+            pauseMenuObject.SetActive(false);
+            Time.timeScale = 1;
+            isPausing = false;
+        }
+        else
+        {
+            pauseMenuObject.SetActive(true);
+            Time.timeScale = 0;
+            isPausing = true;
         }
     }
 }
