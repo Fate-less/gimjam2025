@@ -15,8 +15,8 @@ public class TriggerFloorIntersect : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             if(isPressed) return;
-            isPressed = true;
             FloorIntersectTriggered();
+            isPressed = true;
         }
     }
     public void FloorIntersectTriggered()
